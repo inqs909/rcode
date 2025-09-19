@@ -1,0 +1,9 @@
+---
+title: "R Code Reference"
+subtitle: "For Math 201 and Math/Psy 202"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  fields: [title]
+---

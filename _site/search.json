@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Code Reference",
+    "section": "",
+    "text": "Numerical Data\n\n\n\n\n\n\n\n\n\n\nCategorical Data\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "posts/cat_stats.html",
+    "href": "posts/cat_stats.html",
+    "title": "Categorical Data",
+    "section": "",
+    "text": "Recognize and work with categorical variables in R.\nSummarize categories using frequencies and proportions (a.k.a. relative frequency).\nCreate standard plots for categorical data: bar, stacked bar, pie, mosaic, and waffle.K\nRead and interpret cross‑tabulations (two‑way tables) with row/column/table proportions.\n\n\n\n\n\n\n\nTip\n\n\n\nUse the Copy button on each code chunk. Many chunks include a template version followed by a worked example."
+  },
+  {
+    "objectID": "posts/cat_stats.html#data-for-this-handout",
+    "href": "posts/cat_stats.html#data-for-this-handout",
+    "title": "Categorical Data",
+    "section": "2.1 Data for this handout",
+    "text": "2.1 Data for this handout\nWe will use the Great American Coffee Taste Test survey data from TidyTuesday. Below is a subset of the data.\n\n\nCode\ncoffee &lt;- read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv\")"
+  },
+  {
+    "objectID": "posts/cat_stats.html#using-the-templates-what-to-change",
+    "href": "posts/cat_stats.html#using-the-templates-what-to-change",
+    "title": "Categorical Data",
+    "section": "2.2 Using the templates: what to change",
+    "text": "2.2 Using the templates: what to change\nUse this legend whenever you see a Template code block.\n\nDATA → replace with your data frame/tibble name (e.g., coffee).\nVAR → replace with the single categorical variable you want (e.g., caffeine).\n\nIn ggplot(DATA, aes(x = VAR)), write ggplot(coffee, aes(x = caffeine)).\nIn functions that take a vector (e.g., cat_stats(DATA$VAR)), write cat_stats(coffee$caffeine).\n\nVAR1 and VAR2 → replace with the first and second categorical variables for two‑way tables/stacked bars (e.g., caffeine, taste).\nDF / wdf / df_pie / waffle_df → these are intermediate objects created in the chunk. You can keep the same names or rename them; if you rename, update the subsequent line that uses them.\ngroup = 1 → keep this as‑is for one‑variable proportion bar charts; it ensures correct normalization.\n\n\n2.2.1 Quick replace checklist\n\nSwap DATA for your data frame (usually coffee).\nSwap VAR for your categorical column (e.g., caffeine).\nFor two‑variable templates, set VAR1 and VAR2 (e.g., caffeine and taste).\nIf you change any intermediate object name (like df_pie), update it on the next line as well.\n\n\n\n2.2.2 Tiny example\nTemplate\n# Frequency bar (template)\n ggplot(DATA, aes(x = VAR)) +\n   geom_bar()\nFilled‑in\n# Frequency bar (coffee example)\n ggplot(coffee, aes(x = caffeine)) +\n   geom_bar()\nTemplate\n# Crosstab row proportions (template)\n cat_stats(VAR1, VAR2, prop = \"row\")\nFilled‑in\n# Crosstab row proportions (coffee example)\n cat_stats(coffee$caffeine, coffee$taste, prop = \"row\")"
+  },
+  {
+    "objectID": "posts/cat_stats.html#frequency-counts",
+    "href": "posts/cat_stats.html#frequency-counts",
+    "title": "Categorical Data",
+    "section": "4.1 Frequency (counts)",
+    "text": "4.1 Frequency (counts)\nDefinition: number of observations in each category.\nTemplate:\n# Replace DATA$VAR with your variable\n# freq table (counts)\ncat_stats(DATA$VAR)\nExample: caffeine preference (coffee$caffeine)\n\ncat_stats(coffee$caffeine)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;                  n   prop\n#&gt; Decaf          136 0.0347\n#&gt; Full caffeine 3576 0.9129\n#&gt; Half caff      205 0.0523\n#&gt; \n#&gt; Number of Missing: 125\n#&gt; Proportion of Missing: 0.0309252845126175\n#&gt; Row Variable: coffee$caffeine"
+  },
+  {
+    "objectID": "posts/cat_stats.html#proportion-relative-frequency",
+    "href": "posts/cat_stats.html#proportion-relative-frequency",
+    "title": "Categorical Data",
+    "section": "4.2 Proportion (relative frequency)",
+    "text": "4.2 Proportion (relative frequency)\nDefinition: share of the sample in each category; comparable across sample sizes.\nTemplate:\n# proportions only\ncat_stats(DATA$VAR)\nExample:\n\ncat_stats(coffee$caffeine)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;                  n   prop\n#&gt; Decaf          136 0.0347\n#&gt; Full caffeine 3576 0.9129\n#&gt; Half caff      205 0.0523\n#&gt; \n#&gt; Number of Missing: 125\n#&gt; Proportion of Missing: 0.0309252845126175\n#&gt; Row Variable: coffee$caffeine"
+  },
+  {
+    "objectID": "posts/cat_stats.html#frequency-bar-plot",
+    "href": "posts/cat_stats.html#frequency-bar-plot",
+    "title": "Categorical Data",
+    "section": "5.1 Frequency bar plot",
+    "text": "5.1 Frequency bar plot\nTemplate (frequency):\n# ggplot() + geom_bar() counts rows per category by default\nggplot(DATA, aes(x = VAR)) +\n  geom_bar()\nExample:\n\nggplot(coffee, aes(x = caffeine)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "posts/cat_stats.html#relative-frequency-bar-plot",
+    "href": "posts/cat_stats.html#relative-frequency-bar-plot",
+    "title": "Categorical Data",
+    "section": "5.2 Relative frequency bar plot",
+    "text": "5.2 Relative frequency bar plot\nTemplate (proportion):\n# after_stat(prop) computes proportions within the layer\nggplot(DATA, aes(x = VAR, y = after_stat(prop), group = 1)) +\n  geom_bar()\nExample:\n\nggplot(coffee, aes(x = caffeine, y = after_stat(prop), group = 1)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nTip: Add labels/theme as needed: labs(x = \"\", y = \"Proportion\") + theme_minimal()"
+  },
+  {
+    "objectID": "posts/cat_stats.html#read-the-marginal-distribution",
+    "href": "posts/cat_stats.html#read-the-marginal-distribution",
+    "title": "Categorical Data",
+    "section": "6.1 Read the marginal distribution",
+    "text": "6.1 Read the marginal distribution\n\ncat_stats(coffee$taste)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;        n   prop\n#&gt; No   103 0.0289\n#&gt; Yes 3460 0.9711\n#&gt; \n#&gt; Number of Missing: 479\n#&gt; Proportion of Missing: 0.11850569025235\n#&gt; Row Variable: coffee$taste"
+  },
+  {
+    "objectID": "posts/cat_stats.html#crosstabulation-twoway-table",
+    "href": "posts/cat_stats.html#crosstabulation-twoway-table",
+    "title": "Categorical Data",
+    "section": "6.2 Cross‑tabulation (two‑way table)",
+    "text": "6.2 Cross‑tabulation (two‑way table)\n\nRows: categories of one variable\nColumns: categories of the second variable\nReport counts or proportions by table, row, or column\n\nTable proportions (each cell ÷ grand total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"table\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.0073\" \"99 / 0.0279\"   \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.0186\" \"3178 / 0.8957\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0017\"  \"173 / 0.0488\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / tbl % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine\n\n\nRow proportions (each cell ÷ its row total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"row\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.208\"  \"99 / 0.792\"    \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.0203\" \"3178 / 0.9797\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0335\"  \"173 / 0.9665\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / row % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine\n\n\nColumn proportions (each cell ÷ its column total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"col\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.2653\" \"99 / 0.0287\"   \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.6735\" \"3178 / 0.9212\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0612\"  \"173 / 0.0501\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / col % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine"
+  },
+  {
+    "objectID": "posts/num_stats.html",
+    "href": "posts/num_stats.html",
+    "title": "Numerical Data",
+    "section": "",
+    "text": "Identify numerical (quantitative) variables and read their distributions.\nCompute core descriptive statistics: min, Q1, median (Q2), mean, Q3, max, IQR, variance, sd.\nMake and interpret histograms, box plots, dot plots, and scatter plots.\nRecognize outliers and what they may indicate.\nUse copy‑paste templates and replace placeholders with your data/columns.\n\n\n\n\n\n\n\nTip\n\n\n\nUse the Copy button on each code chunk. Most topics have a template first and a worked example using the Mr. Trash Wheel dataset."
+  },
+  {
+    "objectID": "posts/num_stats.html#data-for-this-handout",
+    "href": "posts/num_stats.html#data-for-this-handout",
+    "title": "Numerical Data",
+    "section": "3.1 Data for this handout",
+    "text": "3.1 Data for this handout\nWe will use the Mr. Trash Wheel dataset from TidyTuesday.\n\n\nCode\ntrashwheel &lt;- read_csv(\n  \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-05/trashwheel.csv\")"
+  },
+  {
+    "objectID": "posts/num_stats.html#using-the-templates-what-to-change",
+    "href": "posts/num_stats.html#using-the-templates-what-to-change",
+    "title": "Numerical Data",
+    "section": "3.2 Using the templates: what to change",
+    "text": "3.2 Using the templates: what to change\nUse this legend whenever you see a Template code block.\n\nDATA → replace with your data frame/tibble name (e.g., trashwheel).\nVAR → replace with the single numerical variable you want (e.g., PlasticBottles).\n\nIn ggplot(DATA, aes(x = VAR)), write ggplot(trashwheel, aes(x = PlasticBottles)).\nIn functions that take a vector (e.g., mean(DATA$VAR)), write mean(trashwheel$PlasticBottles).\n\nVAR1 and VAR2 → replace with the x and y variables for scatter plots (e.g., PlasticBottles, PlasticBags).\nbins = X, binwidth = X → choose a sensible number/width for your data scale.\n\n\n3.2.1 Quick replace checklist\n\nSwap DATA for your data frame (usually trashwheel).\nSwap VAR for your numerical column (e.g., PlasticBottles).\nFor scatter plots, set VAR1 and VAR2.\nAdjust bins or binwidth for histograms/dot plots to show the distribution clearly."
+  },
+  {
+    "objectID": "posts/num_stats.html#what-is-numerical-data",
+    "href": "posts/num_stats.html#what-is-numerical-data",
+    "title": "Numerical Data",
+    "section": "4.1 What is numerical data?",
+    "text": "4.1 What is numerical data?\nNumerical (quantitative) variables record numbers for which arithmetic makes sense (e.g., items collected, weights, costs).\nExample (first few values):\n\nhead(trashwheel$PlasticBottles)\n\n#&gt; [1] 1450 1120 2450 2380  980 1430"
+  },
+  {
+    "objectID": "posts/num_stats.html#central-tendency",
+    "href": "posts/num_stats.html#central-tendency",
+    "title": "Numerical Data",
+    "section": "4.2 Central tendency",
+    "text": "4.2 Central tendency\nCentral tendency summarizes a distribution with a representative value (mean or median).\n\nMedian (Q2) is the 50th percentile: half the data lie below it.\nMean is the arithmetic average: sensitive to outliers/skew."
+  },
+  {
+    "objectID": "posts/num_stats.html#variation-spread",
+    "href": "posts/num_stats.html#variation-spread",
+    "title": "Numerical Data",
+    "section": "4.3 Variation (spread)",
+    "text": "4.3 Variation (spread)\nVariation describes how far data tend to fall from the center.\n\nRange = max − min\nIQR = Q3 − Q1 (middle 50%)\nVariance/SD measure average squared/root‑mean‑squared distance from the mean."
+  },
+  {
+    "objectID": "posts/num_stats.html#fivenumber-summary-iqr",
+    "href": "posts/num_stats.html#fivenumber-summary-iqr",
+    "title": "Numerical Data",
+    "section": "4.4 Five‑number summary & IQR",
+    "text": "4.4 Five‑number summary & IQR\n\nMin, Q1, Median (Q2), Q3, Max\nIQR = Q3 − Q1\n\nTemplate:\nnum_stats(DATA$VAR)           # five-number summary + mean\nExample:\n\nnum_stats(trashwheel$PlasticBottles)\n\n#&gt;   min   q25     mean median  q75  max       sd     var    iqr missing\n#&gt; 1   0 987.5 2219.331   1900 2900 9830 1650.449 2723984 1912.5       1\n\n\nAlternative:\nsummary(DATA$VAR)           # five-number summary + mean"
+  },
+  {
+    "objectID": "posts/num_stats.html#mean-median-variance-sd",
+    "href": "posts/num_stats.html#mean-median-variance-sd",
+    "title": "Numerical Data",
+    "section": "4.5 Mean, median, variance, sd",
+    "text": "4.5 Mean, median, variance, sd\nTemplate:\nmean(DATA$VAR)\nmedian(DATA$VAR)\nvar(DATA$VAR)\nsd(DATA$VAR)\nWith Missing Data:\nmean(DATA$VAR, na.rm = TRUE)\nmedian(DATA$VAR, na.rm = TRUE)\nvar(DATA$VAR, na.rm = TRUE)\nsd(DATA$VAR, na.rm = TRUE)\nExample:\n\nmean(trashwheel$PlasticBottles, na.rm = TRUE)\n\n#&gt; [1] 2219.331\n\nmedian(trashwheel$PlasticBottles, na.rm = TRUE)\n\n#&gt; [1] 1900\n\nvar(trashwheel$PlasticBottles, na.rm = TRUE)\n\n#&gt; [1] 2723984\n\nsd(trashwheel$PlasticBottles, na.rm = TRUE)\n\n#&gt; [1] 1650.449"
+  },
+  {
+    "objectID": "posts/num_stats.html#quantiles",
+    "href": "posts/num_stats.html#quantiles",
+    "title": "Numerical Data",
+    "section": "4.6 Quantiles",
+    "text": "4.6 Quantiles\nTemplate:\n\nquantile(DATA$VAR, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)\n\n#&gt; Error: object 'DATA' not found\n\n\nExample:\n\nquantile(trashwheel$PlasticBottles, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)\n\n#&gt;    25%    50%    75% \n#&gt;  987.5 1900.0 2900.0"
+  },
+  {
+    "objectID": "posts/num_stats.html#oneliner-helper-csucistats",
+    "href": "posts/num_stats.html#oneliner-helper-csucistats",
+    "title": "Numerical Data",
+    "section": "4.7 One‑liner helper (csucistats)",
+    "text": "4.7 One‑liner helper (csucistats)\nTemplate:\n\nnum_stats(DATA$VAR)\n\n#&gt; Error: object 'DATA' not found\n\n\nExample:\n\nnum_stats(trashwheel$PlasticBottles)\n\n#&gt;   min   q25     mean median  q75  max       sd     var    iqr missing\n#&gt; 1   0 987.5 2219.331   1900 2900 9830 1650.449 2723984 1912.5       1"
+  },
+  {
+    "objectID": "posts/num_stats.html#outliers-iqr-rule",
+    "href": "posts/num_stats.html#outliers-iqr-rule",
+    "title": "Numerical Data",
+    "section": "4.8 Outliers (IQR rule)",
+    "text": "4.8 Outliers (IQR rule)\nData points flagged as potential outliers often lie beyond Q1 − 1.5·IQR or Q3 + 1.5·IQR (box‑plot rule). Always investigate context before removing.\nTemplate:\n\nq1  &lt;- quantile(DATA$VAR, 0.25, na.rm = TRUE)\n\n#&gt; Error: object 'DATA' not found\n\nq3  &lt;- quantile(DATA$VAR, 0.75, na.rm = TRUE)\n\n#&gt; Error: object 'DATA' not found\n\niqr &lt;- q3 - q1\n\n#&gt; Error: object 'q3' not found\n\nlower &lt;- q1 - 1.5 * iqr\n\n#&gt; Error: object 'q1' not found\n\nupper &lt;- q3 + 1.5 * iqr\n\n#&gt; Error: object 'q3' not found\n\nsubset_vals &lt;- DATA$VAR[DATA$VAR &lt; lower | DATA$VAR &gt; upper]\n\n#&gt; Error: object 'DATA' not found\n\nsubset_vals\n\n#&gt; Error: object 'subset_vals' not found\n\n\nExample:\n\nq1  &lt;- quantile(trashwheel$PlasticBottles, 0.25, na.rm = TRUE)\nq3  &lt;- quantile(trashwheel$PlasticBottles, 0.75, na.rm = TRUE)\niqr &lt;- q3 - q1\nlower &lt;- q1 - 1.5 * iqr\nupper &lt;- q3 + 1.5 * iqr\ntrashwheel$PlasticBottles[trashwheel$PlasticBottles &lt; lower | trashwheel$PlasticBottles &gt; upper]\n\n#&gt;  [1] 5960 5800 9540 8350 8590 7830 8210 9830 9240 9540 8230 7540 8490 9610 7960\n#&gt; [16] 8870 7420 8250 8472 7530 7340 9230 6970 9100 8400 6500 8800 6800 5900 7500\n#&gt; [31] 8000 6600 6400 5900 7200 6700 6000 6800 5950 7200 6400 5800 6400   NA"
+  },
+  {
+    "objectID": "posts/num_stats.html#histograms",
+    "href": "posts/num_stats.html#histograms",
+    "title": "Numerical Data",
+    "section": "5.1 Histograms",
+    "text": "5.1 Histograms\nA histogram shows the distribution by binning values and counting how many fall in each bin.\nTemplate (choose either bins OR binwidth):\nggplot(DATA, aes(x = VAR)) +\n  geom_histogram(bins = X) \nExample:\n\nggplot(trashwheel, aes(x = PlasticBottles)) +\n  geom_histogram(bins = 20)\n\n#&gt; Warning: Removed 1 row containing non-finite outside the scale range\n#&gt; (`stat_bin()`)."
+  },
+  {
+    "objectID": "posts/num_stats.html#kernel-density-curve-optional",
+    "href": "posts/num_stats.html#kernel-density-curve-optional",
+    "title": "Numerical Data",
+    "section": "5.2 Kernel density curve (optional)",
+    "text": "5.2 Kernel density curve (optional)\nTemplate:\n\nggplot(DATA, aes(x = VAR)) +\n  geom_density(adjust = 1)\n\n#&gt; Error: object 'DATA' not found\n\n\nExample:\n\nggplot(trashwheel, aes(x = PlasticBottles)) +\n  geom_density()\n\n#&gt; Warning: Removed 1 row containing non-finite outside the scale range\n#&gt; (`stat_density()`)."
+  },
+  {
+    "objectID": "posts/num_stats.html#box-plots",
+    "href": "posts/num_stats.html#box-plots",
+    "title": "Numerical Data",
+    "section": "5.3 Box plots",
+    "text": "5.3 Box plots\nA box plot summarizes median, quartiles, and potential outliers.\nTemplate:\nggplot(DATA, aes(VAR)) +\n  geom_boxplot()\nExample:\n\nggplot(trashwheel, aes(PlasticBottles)) +\n  geom_boxplot() \n\n#&gt; Warning: Removed 1 row containing non-finite outside the scale range\n#&gt; (`stat_boxplot()`)."
+  },
+  {
+    "objectID": "posts/num_stats.html#dot-plots",
+    "href": "posts/num_stats.html#dot-plots",
+    "title": "Numerical Data",
+    "section": "5.4 Dot plots",
+    "text": "5.4 Dot plots\nA dot plot stacks dots within bins to show distribution.\nTemplate:\nggplot(DATA, aes(x = VAR)) +\n  geom_dotplot(binwidth = X)  # choose a sensible binwidth\nExample:\n\nggplot(trashwheel, aes(x = PlasticBottles)) +\n  geom_dotplot(binwidth = 100)\n\n#&gt; Warning: Removed 1 row containing missing values or values outside the scale range\n#&gt; (`stat_bindot()`)."
+  },
+  {
+    "objectID": "posts/num_stats.html#summary-statistics-1",
+    "href": "posts/num_stats.html#summary-statistics-1",
+    "title": "Numerical Data",
+    "section": "4.4 Summary Statistics",
+    "text": "4.4 Summary Statistics\nTemplate:\nnum_stats(DATA$VAR)           # five-number summary + mean\nExample:\n\nnum_stats(trashwheel$PlasticBottles)\n\n#&gt;   min   q25     mean median  q75  max       sd     var    iqr missing\n#&gt; 1   0 987.5 2219.331   1900 2900 9830 1650.449 2723984 1912.5       1\n\n\nAlternative:\nsummary(DATA$VAR)           # five-number summary + mean"
+  },
+  {
+    "objectID": "posts/num_stats.html#kernel-density-plot",
+    "href": "posts/num_stats.html#kernel-density-plot",
+    "title": "Numerical Data",
+    "section": "5.2 Kernel density plot",
+    "text": "5.2 Kernel density plot\nTemplate:\nggplot(DATA, aes(x = VAR)) +\n  geom_density()\nExample:\n\nggplot(trashwheel, aes(x = PlasticBottles)) +\n  geom_density()\n\n#&gt; Warning: Removed 1 row containing non-finite outside the scale range\n#&gt; (`stat_density()`)."
+  }
+]
