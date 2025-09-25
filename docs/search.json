@@ -1,73 +1,66 @@
 [
   {
-    "objectID": "posts/cat_stats.html",
-    "href": "posts/cat_stats.html",
-    "title": "Categorical Data",
+    "objectID": "posts/regression.html",
+    "href": "posts/regression.html",
+    "title": "Regression Models",
     "section": "",
-    "text": "Recognize and work with categorical variables in R.\nSummarize categories using frequencies and proportions (a.k.a. relative frequency).\nCreate standard plots for categorical data: bar, stacked bar, pie, mosaic, and waffle.K\nRead and interpret cross‑tabulations (two‑way tables) with row/column/table proportions.\n\n\n\n\n\n\n\nTip\n\n\n\nUse the Copy button on each code chunk. Many chunks include a template version followed by a worked example."
+    "text": "DATA → your data frame/tibble (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nX, X1, X2, …, Xp → predictor variables (e.g., flipper_length_mm, species).\n\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
   },
   {
-    "objectID": "posts/cat_stats.html#data-for-this-handout",
-    "href": "posts/cat_stats.html#data-for-this-handout",
-    "title": "Categorical Data",
-    "section": "2.1 Data for this handout",
-    "text": "2.1 Data for this handout\nWe will use the Great American Coffee Taste Test survey data from TidyTuesday. Below is a subset of the data.\n\n\nCode\ncoffee &lt;- read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv\")"
-  },
-  {
-    "objectID": "posts/cat_stats.html#using-the-templates-what-to-change",
-    "href": "posts/cat_stats.html#using-the-templates-what-to-change",
-    "title": "Categorical Data",
-    "section": "2.2 Using the templates: what to change",
-    "text": "2.2 Using the templates: what to change\nUse this legend whenever you see a Template code block.\n\nDATA → replace with your data frame/tibble name (e.g., coffee).\nVAR → replace with the single categorical variable you want (e.g., caffeine).\n\nIn ggplot(DATA, aes(x = VAR)), write ggplot(coffee, aes(x = caffeine)).\nIn functions that take a vector (e.g., cat_stats(DATA$VAR)), write cat_stats(coffee$caffeine).\n\nVAR1 and VAR2 → replace with the first and second categorical variables for two‑way tables/stacked bars (e.g., caffeine, taste).\nDF / wdf / df_pie / waffle_df → these are intermediate objects created in the chunk. You can keep the same names or rename them; if you rename, update the subsequent line that uses them.\ngroup = 1 → keep this as‑is for one‑variable proportion bar charts; it ensures correct normalization.\n\n\n2.2.1 Quick replace checklist\n\nSwap DATA for your data frame (usually coffee).\nSwap VAR for your categorical column (e.g., caffeine).\nFor two‑variable templates, set VAR1 and VAR2 (e.g., caffeine and taste).\nIf you change any intermediate object name (like df_pie), update it on the next line as well.\n\n\n\n2.2.2 Tiny example\nTemplate\n# Frequency bar (template)\n ggplot(DATA, aes(x = VAR)) +\n   geom_bar()\nFilled‑in\n# Frequency bar (coffee example)\n ggplot(coffee, aes(x = caffeine)) +\n   geom_bar()\nTemplate\n# Crosstab row proportions (template)\n cat_stats(VAR1, VAR2, prop = \"row\")\nFilled‑in\n# Crosstab row proportions (coffee example)\n cat_stats(coffee$caffeine, coffee$taste, prop = \"row\")"
-  },
-  {
-    "objectID": "posts/cat_stats.html#frequency-counts",
-    "href": "posts/cat_stats.html#frequency-counts",
-    "title": "Categorical Data",
-    "section": "4.1 Frequency (counts)",
-    "text": "4.1 Frequency (counts)\nDefinition: number of observations in each category.\nTemplate:\n# Replace DATA$VAR with your variable\n# freq table (counts)\ncat_stats(DATA$VAR)\nExample: caffeine preference (coffee$caffeine)\n\ncat_stats(coffee$caffeine)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;                  n   prop\n#&gt; Decaf          136 0.0347\n#&gt; Full caffeine 3576 0.9129\n#&gt; Half caff      205 0.0523\n#&gt; \n#&gt; Number of Missing: 125\n#&gt; Proportion of Missing: 0.0309252845126175\n#&gt; Row Variable: coffee$caffeine"
-  },
-  {
-    "objectID": "posts/cat_stats.html#proportion-relative-frequency",
-    "href": "posts/cat_stats.html#proportion-relative-frequency",
-    "title": "Categorical Data",
-    "section": "4.2 Proportion (relative frequency)",
-    "text": "4.2 Proportion (relative frequency)\nDefinition: share of the sample in each category; comparable across sample sizes.\nTemplate:\n# proportions only\ncat_stats(DATA$VAR)\nExample:\n\ncat_stats(coffee$caffeine)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;                  n   prop\n#&gt; Decaf          136 0.0347\n#&gt; Full caffeine 3576 0.9129\n#&gt; Half caff      205 0.0523\n#&gt; \n#&gt; Number of Missing: 125\n#&gt; Proportion of Missing: 0.0309252845126175\n#&gt; Row Variable: coffee$caffeine"
-  },
-  {
-    "objectID": "posts/cat_stats.html#frequency-bar-plot",
-    "href": "posts/cat_stats.html#frequency-bar-plot",
-    "title": "Categorical Data",
-    "section": "5.1 Frequency bar plot",
-    "text": "5.1 Frequency bar plot\nTemplate (frequency):\n# ggplot() + geom_bar() counts rows per category by default\nggplot(DATA, aes(x = VAR)) +\n  geom_bar()\nExample:\n\nggplot(coffee, aes(x = caffeine)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "posts/cat_stats.html#relative-frequency-bar-plot",
-    "href": "posts/cat_stats.html#relative-frequency-bar-plot",
-    "title": "Categorical Data",
-    "section": "5.2 Relative frequency bar plot",
-    "text": "5.2 Relative frequency bar plot\nTemplate (proportion):\n# after_stat(prop) computes proportions within the layer\nggplot(DATA, aes(x = VAR, y = after_stat(prop), group = 1)) +\n  geom_bar()\nExample:\n\nggplot(coffee, aes(x = caffeine, y = after_stat(prop), group = 1)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nTip: Add labels/theme as needed: labs(x = \"\", y = \"Proportion\") + theme_minimal()"
-  },
-  {
-    "objectID": "posts/cat_stats.html#read-the-marginal-distribution",
-    "href": "posts/cat_stats.html#read-the-marginal-distribution",
-    "title": "Categorical Data",
-    "section": "6.1 Read the marginal distribution",
-    "text": "6.1 Read the marginal distribution\n\ncat_stats(coffee$taste)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;        n   prop\n#&gt; No   103 0.0289\n#&gt; Yes 3460 0.9711\n#&gt; \n#&gt; Number of Missing: 479\n#&gt; Proportion of Missing: 0.11850569025235\n#&gt; Row Variable: coffee$taste"
-  },
-  {
-    "objectID": "posts/cat_stats.html#crosstabulation-twoway-table",
-    "href": "posts/cat_stats.html#crosstabulation-twoway-table",
-    "title": "Categorical Data",
-    "section": "6.2 Cross‑tabulation (two‑way table)",
-    "text": "6.2 Cross‑tabulation (two‑way table)\n\nRows: categories of one variable\nColumns: categories of the second variable\nReport counts or proportions by table, row, or column\n\nTable proportions (each cell ÷ grand total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"table\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.0073\" \"99 / 0.0279\"   \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.0186\" \"3178 / 0.8957\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0017\"  \"173 / 0.0488\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / tbl % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine\n\n\nRow proportions (each cell ÷ its row total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"row\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.208\"  \"99 / 0.792\"    \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.0203\" \"3178 / 0.9797\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0335\"  \"173 / 0.9665\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / row % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine\n\n\nColumn proportions (each cell ÷ its column total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"col\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.2653\" \"99 / 0.0287\"   \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.6735\" \"3178 / 0.9212\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0612\"  \"173 / 0.0501\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / col % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R Code Reference",
+    "objectID": "posts/regression.html#using-the-templates-what-to-change",
+    "href": "posts/regression.html#using-the-templates-what-to-change",
+    "title": "Regression Models",
     "section": "",
-    "text": "Numerical Data\n\n\n\n\n\n\n\n\n\n\nCategorical Data\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "DATA → your data frame/tibble (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nX, X1, X2, …, Xp → predictor variables (e.g., flipper_length_mm, species).\n\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
+  },
+  {
+    "objectID": "posts/regression.html#explaining-variation",
+    "href": "posts/regression.html#explaining-variation",
+    "title": "Regression Models",
+    "section": "2.1 Explaining variation",
+    "text": "2.1 Explaining variation\nThis is the process of trying to reduce unexplained variation in an outcome by using informative predictors — think getting it less wrong with an educated guess.\n\n# One-variable view\nggplot(penguins, aes(body_mass_g)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\n# Same variable, grouped by a category (species)\nggplot(penguins, aes(body_mass_g, fill = species)) +\n  geom_density(alpha = .5)"
+  },
+  {
+    "objectID": "posts/regression.html#visualization-1d-vs.-2d",
+    "href": "posts/regression.html#visualization-1d-vs.-2d",
+    "title": "Regression Models",
+    "section": "4.1 Visualization (1D vs. 2D)",
+    "text": "4.1 Visualization (1D vs. 2D)\n\n# 1-D: distribution of Y\nggplot(penguins, aes(body_mass_g)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\n# 2-D: density of (X, Y)\nggplot(penguins, \n       aes(x = flipper_length_mm, y = body_mass_g, fill = after_stat(level))) +\n  stat_density_2d(geom = \"polygon\")"
+  },
+  {
+    "objectID": "posts/regression.html#model-form",
+    "href": "posts/regression.html#model-form",
+    "title": "Regression Models",
+    "section": "4.2 Model form",
+    "text": "4.2 Model form\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\hat Y = \\hat\\beta_0 + \\hat\\beta_1 X.\n\\]\n\n# Scatter plot\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n# Add a least-squares line\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  stat_smooth(method = \"lm\", se = FALSE)\n\n\n\n\n\n\n\n\n\n# Fit the model\nm1 &lt;- lm(body_mass_g ~ flipper_length_mm, data = penguins)\nm1\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt;       (Intercept)  flipper_length_mm  \n#&gt;          -5872.09              50.15\n\n\nInterpretation:\n\nIntercept \\(\\hat\\beta_0\\): predicted Y when X = 0 (may not be meaningful).\n\nSlope \\(\\hat\\beta_1\\): change in Y for a 1‑unit increase in X, on average.\n\nTemplate:\nlm(Y ~ X, data = DATA)"
+  },
+  {
+    "objectID": "posts/regression.html#general-idea",
+    "href": "posts/regression.html#general-idea",
+    "title": "Regression Models",
+    "section": "5.1 General idea",
+    "text": "5.1 General idea\n\nSuppose we have a categorical variable with C categories.\n\nWe create C − 1 dummy variables, each taking value:\n\n1 if the observation belongs to that category\n\n0 otherwise\n\n\nThe category without a dummy variable becomes the reference (baseline) group.\n\nExample: Penguin species:\nThe species variable has 3 categories: Adelie, Chinstrap, Gentoo.\nWe create two dummy variables:\n\n\\(D_1\\): 1 if Chinstrap, 0 otherwise\n\n\\(D_2\\): 1 if Gentoo, 0 otherwise\n\nAdelie is the reference (when both \\(D_1 = 0, D_2 = 0\\))\n\n\n\n\nSpecies\n\\(D_1\\) (Chinstrap)\n\\(D_2\\) (Gentoo)\n\n\n\n\nAdelie\n0\n0\n\n\nChinstrap\n1\n0\n\n\nGentoo\n0\n1"
+  },
+  {
+    "objectID": "posts/regression.html#regression-model-with-dummy-variables",
+    "href": "posts/regression.html#regression-model-with-dummy-variables",
+    "title": "Regression Models",
+    "section": "5.2 Regression model with dummy variables",
+    "text": "5.2 Regression model with dummy variables\nIf we model penguin body mass (\\(Y\\)) with species:\n\\[\n\\hat Y_i = \\beta_0 + \\beta_1 D_{1i} + \\beta_2 D_{2i}\n\\]\n\n\\(\\beta_0\\): mean of Adelie (reference group)\n\n\\(\\beta_1\\): difference in mean body mass between Chinstrap and Adelie\n\n\\(\\beta_2\\): difference in mean body mass between Gentoo and Adelie\n\nPredictions:\n- Adelie: \\(\\hat Y = \\beta_0\\)\n- Chinstrap: \\(\\hat Y = \\beta_0 + \\beta_1\\)\n- Gentoo: \\(\\hat Y = \\beta_0 + \\beta_2\\)"
+  },
+  {
+    "objectID": "posts/regression.html#r-implementation",
+    "href": "posts/regression.html#r-implementation",
+    "title": "Regression Models",
+    "section": "5.3 R Implementation",
+    "text": "5.3 R Implementation\nR automatically creates dummy variables when you use a factor in lm().\nThe first level of the factor is used as the reference group (by default).\n\n# Fit model with species (factor) as predictor\nm &lt;- lm(body_mass_g ~ species, data = penguins)\nsummary(m)\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ species, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -1142.44  -342.44   -33.09   307.56  1207.56 \n#&gt; \n#&gt; Coefficients:\n#&gt;                  Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept)       3706.16      38.14  97.184   &lt;2e-16 ***\n#&gt; speciesChinstrap    26.92      67.65   0.398    0.691    \n#&gt; speciesGentoo     1386.27      56.91  24.359   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 460.8 on 330 degrees of freedom\n#&gt; Multiple R-squared:  0.6745, Adjusted R-squared:  0.6725 \n#&gt; F-statistic: 341.9 on 2 and 330 DF,  p-value: &lt; 2.2e-16\n\n\nTemplates:\nlm(Y ~ X, data = DATA)           # if X is already a factor\nlm(Y ~ factor(X), data = DATA)   # force X to be treated as factor"
+  },
+  {
+    "objectID": "posts/regression.html#group-statistics",
+    "href": "posts/regression.html#group-statistics",
+    "title": "Regression Models",
+    "section": "5.4 Group Statistics",
+    "text": "5.4 Group Statistics\nThe function num_by_cat_stats() quickly computes descriptive statistics of a numerical variable grouped by a categorical variable.\nTemplate:\nnum_by_cat_stats(DATA, NUM, CAT)\n\nDATA: the data frame (e.g., penguins)\nNUM: the numerical variable you want to summarize (e.g., body_mass_g)\nCAT: the categorical variable that defines groups (e.g., species)\n\nExample:\n\nnum_by_cat_stats(penguins, body_mass_g, species)\n\n#&gt;   Categories  min    q25     mean median  q75  max      sd      var   iqr\n#&gt; 1     Adelie 2850 3362.5 3706.164   3700 4000 4775 458.620 210332.4 637.5\n#&gt; 2  Chinstrap 2700 3487.5 3733.088   3700 3950 4800 384.335 147713.5 462.5\n#&gt; 3     Gentoo 3950 4700.0 5092.437   5050 5500 6300 501.476 251478.3 800.0\n#&gt;   missing\n#&gt; 1       0\n#&gt; 2       0\n#&gt; 3       0"
   },
   {
     "objectID": "posts/num_stats.html#data-for-this-handout",
@@ -152,5 +145,75 @@
     "title": "Numerical Data",
     "section": "5.4 Dot plots",
     "text": "5.4 Dot plots\nA dot plot stacks dots within bins to show distribution.\nTemplate:\nggplot(DATA, aes(x = VAR)) +\n  geom_dotplot(binwidth = X)  # choose a sensible binwidth\nExample:\n\nggplot(trashwheel, aes(x = PlasticBottles)) +\n  geom_dotplot(binwidth = 100)\n\n#&gt; Warning: Removed 1 row containing missing values or values outside the scale range\n#&gt; (`stat_bindot()`)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Code Reference",
+    "section": "",
+    "text": "Numerical Data\n\n\n\n\n\n\n\n\n\n\nCategorical Data\n\n\n\n\n\n\n\n\n\n\nRegression Models\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/cat_stats.html",
+    "href": "posts/cat_stats.html",
+    "title": "Categorical Data",
+    "section": "",
+    "text": "Recognize and work with categorical variables in R.\nSummarize categories using frequencies and proportions (a.k.a. relative frequency).\nCreate standard plots for categorical data: bar, stacked bar, pie, mosaic, and waffle.K\nRead and interpret cross‑tabulations (two‑way tables) with row/column/table proportions.\n\n\n\n\n\n\n\nTip\n\n\n\nUse the Copy button on each code chunk. Many chunks include a template version followed by a worked example."
+  },
+  {
+    "objectID": "posts/cat_stats.html#data-for-this-handout",
+    "href": "posts/cat_stats.html#data-for-this-handout",
+    "title": "Categorical Data",
+    "section": "2.1 Data for this handout",
+    "text": "2.1 Data for this handout\nWe will use the Great American Coffee Taste Test survey data from TidyTuesday. Below is a subset of the data.\n\n\nCode\ncoffee &lt;- read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv\")"
+  },
+  {
+    "objectID": "posts/cat_stats.html#using-the-templates-what-to-change",
+    "href": "posts/cat_stats.html#using-the-templates-what-to-change",
+    "title": "Categorical Data",
+    "section": "2.2 Using the templates: what to change",
+    "text": "2.2 Using the templates: what to change\nUse this legend whenever you see a Template code block.\n\nDATA → replace with your data frame/tibble name (e.g., coffee).\nVAR → replace with the single categorical variable you want (e.g., caffeine).\n\nIn ggplot(DATA, aes(x = VAR)), write ggplot(coffee, aes(x = caffeine)).\nIn functions that take a vector (e.g., cat_stats(DATA$VAR)), write cat_stats(coffee$caffeine).\n\nVAR1 and VAR2 → replace with the first and second categorical variables for two‑way tables/stacked bars (e.g., caffeine, taste).\nDF / wdf / df_pie / waffle_df → these are intermediate objects created in the chunk. You can keep the same names or rename them; if you rename, update the subsequent line that uses them.\ngroup = 1 → keep this as‑is for one‑variable proportion bar charts; it ensures correct normalization.\n\n\n2.2.1 Quick replace checklist\n\nSwap DATA for your data frame (usually coffee).\nSwap VAR for your categorical column (e.g., caffeine).\nFor two‑variable templates, set VAR1 and VAR2 (e.g., caffeine and taste).\nIf you change any intermediate object name (like df_pie), update it on the next line as well.\n\n\n\n2.2.2 Tiny example\nTemplate\n# Frequency bar (template)\n ggplot(DATA, aes(x = VAR)) +\n   geom_bar()\nFilled‑in\n# Frequency bar (coffee example)\n ggplot(coffee, aes(x = caffeine)) +\n   geom_bar()\nTemplate\n# Crosstab row proportions (template)\n cat_stats(VAR1, VAR2, prop = \"row\")\nFilled‑in\n# Crosstab row proportions (coffee example)\n cat_stats(coffee$caffeine, coffee$taste, prop = \"row\")"
+  },
+  {
+    "objectID": "posts/cat_stats.html#frequency-counts",
+    "href": "posts/cat_stats.html#frequency-counts",
+    "title": "Categorical Data",
+    "section": "4.1 Frequency (counts)",
+    "text": "4.1 Frequency (counts)\nDefinition: number of observations in each category.\nTemplate:\n# Replace DATA$VAR with your variable\n# freq table (counts)\ncat_stats(DATA$VAR)\nExample: caffeine preference (coffee$caffeine)\n\ncat_stats(coffee$caffeine)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;                  n   prop\n#&gt; Decaf          136 0.0347\n#&gt; Full caffeine 3576 0.9129\n#&gt; Half caff      205 0.0523\n#&gt; \n#&gt; Number of Missing: 125\n#&gt; Proportion of Missing: 0.0309252845126175\n#&gt; Row Variable: coffee$caffeine"
+  },
+  {
+    "objectID": "posts/cat_stats.html#proportion-relative-frequency",
+    "href": "posts/cat_stats.html#proportion-relative-frequency",
+    "title": "Categorical Data",
+    "section": "4.2 Proportion (relative frequency)",
+    "text": "4.2 Proportion (relative frequency)\nDefinition: share of the sample in each category; comparable across sample sizes.\nTemplate:\n# proportions only\ncat_stats(DATA$VAR)\nExample:\n\ncat_stats(coffee$caffeine)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;                  n   prop\n#&gt; Decaf          136 0.0347\n#&gt; Full caffeine 3576 0.9129\n#&gt; Half caff      205 0.0523\n#&gt; \n#&gt; Number of Missing: 125\n#&gt; Proportion of Missing: 0.0309252845126175\n#&gt; Row Variable: coffee$caffeine"
+  },
+  {
+    "objectID": "posts/cat_stats.html#frequency-bar-plot",
+    "href": "posts/cat_stats.html#frequency-bar-plot",
+    "title": "Categorical Data",
+    "section": "5.1 Frequency bar plot",
+    "text": "5.1 Frequency bar plot\nTemplate (frequency):\n# ggplot() + geom_bar() counts rows per category by default\nggplot(DATA, aes(x = VAR)) +\n  geom_bar()\nExample:\n\nggplot(coffee, aes(x = caffeine)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "posts/cat_stats.html#relative-frequency-bar-plot",
+    "href": "posts/cat_stats.html#relative-frequency-bar-plot",
+    "title": "Categorical Data",
+    "section": "5.2 Relative frequency bar plot",
+    "text": "5.2 Relative frequency bar plot\nTemplate (proportion):\n# after_stat(prop) computes proportions within the layer\nggplot(DATA, aes(x = VAR, y = after_stat(prop), group = 1)) +\n  geom_bar()\nExample:\n\nggplot(coffee, aes(x = caffeine, y = after_stat(prop), group = 1)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nTip: Add labels/theme as needed: labs(x = \"\", y = \"Proportion\") + theme_minimal()"
+  },
+  {
+    "objectID": "posts/cat_stats.html#read-the-marginal-distribution",
+    "href": "posts/cat_stats.html#read-the-marginal-distribution",
+    "title": "Categorical Data",
+    "section": "6.1 Read the marginal distribution",
+    "text": "6.1 Read the marginal distribution\n\ncat_stats(coffee$taste)\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;        n   prop\n#&gt; No   103 0.0289\n#&gt; Yes 3460 0.9711\n#&gt; \n#&gt; Number of Missing: 479\n#&gt; Proportion of Missing: 0.11850569025235\n#&gt; Row Variable: coffee$taste"
+  },
+  {
+    "objectID": "posts/cat_stats.html#crosstabulation-twoway-table",
+    "href": "posts/cat_stats.html#crosstabulation-twoway-table",
+    "title": "Categorical Data",
+    "section": "6.2 Cross‑tabulation (two‑way table)",
+    "text": "6.2 Cross‑tabulation (two‑way table)\n\nRows: categories of one variable\nColumns: categories of the second variable\nReport counts or proportions by table, row, or column\n\nTable proportions (each cell ÷ grand total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"table\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.0073\" \"99 / 0.0279\"   \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.0186\" \"3178 / 0.8957\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0017\"  \"173 / 0.0488\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / tbl % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine\n\n\nRow proportions (each cell ÷ its row total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"row\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.208\"  \"99 / 0.792\"    \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.0203\" \"3178 / 0.9797\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0335\"  \"173 / 0.9665\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / row % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine\n\n\nColumn proportions (each cell ÷ its column total):\n\ncat_stats(coffee$caffeine, coffee$taste, prop = \"col\")\n\n#&gt; Continguency Table \n#&gt;  \n#&gt;               No            Yes             Row Totals     \n#&gt; Decaf         \"26 / 0.2653\" \"99 / 0.0287\"   \"125 / 0.0352\" \n#&gt; Full caffeine \"66 / 0.6735\" \"3178 / 0.9212\" \"3244 / 0.9143\"\n#&gt; Half caff     \"6 / 0.0612\"  \"173 / 0.0501\"  \"179 / 0.0505\" \n#&gt; Col Totals    \"98 / 0.0276\" \"3450 / 0.9724\" \"Total: 3548\"  \n#&gt; \n#&gt; Cell Contents: n / col % \n#&gt; Col Totals Contents: n / row % \n#&gt; Row Totals Contents: n / col % \n#&gt; Column Variable: coffee$taste\n#&gt; Row Variable: coffee$caffeine"
   }
 ]

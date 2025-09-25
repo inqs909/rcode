@@ -1,0 +1,428 @@
+---
+title: "Regression Models"
+subtitle: "Explaining variation, simple & multiple linear models, categorical predictors, correlation, prediction"
+description: |
+  A student-friendly Quarto handout based on your lecture outline. Includes the
+  penguins and Taylor datasets, runnable examples, and copy‑paste templates.
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-tools: true
+    code-fold: false
+    theme: cosmo
+    smooth-scroll: true
+editor: source
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+  cache: true
+jupyter: r
+knitr:
+  opts_chunk:
+    comment: "#>"
+---
+
+# Setup
+
+```{r}
+#| label: setup
+#| include: false
+
+# install.packages(c("tidyverse","DT"))
+# install.packages("csucistats")
+# install.packages("ThemePark")
+# install.packages("palmerpenguins")
+# install.packages("taylor")
+
+library(tidyverse)
+library(csucistats)
+library(ThemePark)
+library(taylor)
+library(palmerpenguins)
+library(DT)
+
+penguins <- palmerpenguins::penguins |> tidyr::drop_na()
+theme_set(theme_bw())
+
+DT::datatable(head(penguins, 6), options = list(dom = "p"))
+```
+
+## Using the templates: what to change
+
+- **`DATA`** → your data frame/tibble (e.g., `penguins`).  
+- **`Y`** → the outcome variable (e.g., `body_mass_g`).  
+- **`X`, `X1`, `X2`, ..., `Xp`** → predictor variables (e.g., `flipper_length_mm`, `species`).  
+- For categorical predictors: ensure the predictor is a **factor** (use `factor(X)` if needed).
+
+
+# Modeling Relationships
+
+## Explaining variation
+
+This is the process of trying to **reduce unexplained variation** in an outcome by using informative predictors — think *getting it less wrong* with an educated guess.
+
+```{r}
+# One-variable view
+ggplot(penguins, aes(body_mass_g)) +
+  geom_density()
+```
+
+```{r}
+# Same variable, grouped by a category (species)
+ggplot(penguins, aes(body_mass_g, fill = species)) +
+  geom_density(alpha = .5)
+```
+
+---
+
+# A simple model (intercept-only)
+
+Generated data idea: $Y \sim DGP_1$. A minimal model says everyone gets the same prediction:  
+$$Y = \beta_0 + \varepsilon.$$
+
+```{r}
+# Density + later we'll add the mean as a vertical line
+ggplot(penguins, aes(body_mass_g)) +
+  geom_density()
+```
+
+Fill in the blank: $Y = \_\_\_ + error \Rightarrow Y = \beta_0 + \varepsilon$.
+
+Simple generated model: $Y \sim \beta_0 + \varepsilon,\ \varepsilon \sim DGP_2$ (a different distribution after centering).
+
+Observed vs. estimated:
+
+- Observed $Y = \beta_0 + \varepsilon$
+- Estimated $\hat Y = \hat\beta_0$
+
+```{r}
+# Fit the null (intercept-only) model
+m0 <- lm(body_mass_g ~ 1, data = penguins)
+m0
+```
+
+```{r}
+# Visualize the estimated mean
+mu_hat <- b(m0, 0)
+ggplot(penguins, aes(body_mass_g)) +
+  geom_density() +
+  geom_vline(xintercept = mu_hat, linetype = 2)
+```
+
+Residuals are the observed errors: $r_i = Y_i - \hat Y_i$.
+
+**Template:**
+
+```r
+lm(Y ~ 1, data = DATA)
+```
+
+
+# Linear model with one predictor
+
+## Visualization (1D vs. 2D)
+
+```{r}
+# 1-D: distribution of Y
+ggplot(penguins, aes(body_mass_g)) +
+  geom_density()
+```
+
+```{r}
+# 2-D: density of (X, Y)
+ggplot(penguins, 
+       aes(x = flipper_length_mm, y = body_mass_g, fill = after_stat(level))) +
+  stat_density_2d(geom = "polygon")
+```
+
+## Model form
+
+$$
+Y = \beta_0 + \beta_1 X + \varepsilon, \quad \hat Y = \hat\beta_0 + \hat\beta_1 X.
+$$
+
+```{r}
+# Scatter plot
+ggplot(penguins, aes(flipper_length_mm, body_mass_g)) +
+  geom_point()
+```
+
+```{r}
+# Add a least-squares line
+ggplot(penguins, aes(flipper_length_mm, body_mass_g)) +
+  geom_point() +
+  stat_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+# Fit the model
+m1 <- lm(body_mass_g ~ flipper_length_mm, data = penguins)
+m1
+```
+
+Interpretation:  
+
+- Intercept $\hat\beta_0$: predicted Y when X = 0 (may not be meaningful).  
+- Slope $\hat\beta_1$: change in Y for a 1‑unit increase in X, on average.
+
+**Template:**
+
+```r
+lm(Y ~ X, data = DATA)
+```
+
+
+# Categorical predictors (dummy variables)
+
+
+When we use a **categorical predictor** in a regression, R needs to convert the categories into numbers. This is done using **dummy variables** (also called indicator variables).
+
+## General idea
+
+- Suppose we have a categorical variable with **C categories**.  
+- We create **C − 1 dummy variables**, each taking value:
+  - `1` if the observation belongs to that category  
+  - `0` otherwise  
+- The category without a dummy variable becomes the **reference (baseline)** group.  
+
+**Example: Penguin species:**
+
+The `species` variable has 3 categories: **Adelie, Chinstrap, Gentoo**.  
+
+We create two dummy variables:
+
+- $D_1$: 1 if Chinstrap, 0 otherwise  
+- $D_2$: 1 if Gentoo, 0 otherwise  
+- Adelie is the reference (when both $D_1 = 0, D_2 = 0$)  
+
+| Species    | $D_1$ (Chinstrap) | $D_2$ (Gentoo) |
+|------------|-------------------|----------------|
+| Adelie     | 0                 | 0              |
+| Chinstrap  | 1                 | 0              |
+| Gentoo     | 0                 | 1              |
+
+
+## Regression model with dummy variables
+
+If we model penguin body mass ($Y$) with species:
+
+$$
+\hat Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i}
+$$
+
+- $\beta_0$: mean of Adelie (reference group)  
+- $\beta_1$: difference in mean body mass between Chinstrap and Adelie  
+- $\beta_2$: difference in mean body mass between Gentoo and Adelie  
+
+Predictions:  
+- Adelie: $\hat Y = \beta_0$  
+- Chinstrap: $\hat Y = \beta_0 + \beta_1$  
+- Gentoo: $\hat Y = \beta_0 + \beta_2$  
+
+## R Implementation
+
+R automatically creates dummy variables when you use a factor in `lm()`.  
+The first level of the factor is used as the **reference group** (by default).
+
+```{r}
+# Fit model with species (factor) as predictor
+m <- lm(body_mass_g ~ species, data = penguins)
+summary(m)
+```
+
+
+**Templates:**
+
+```r
+lm(Y ~ X, data = DATA)           # if X is already a factor
+lm(Y ~ factor(X), data = DATA)   # force X to be treated as factor
+```
+
+## Group Statistics
+
+The function `num_by_cat_stats()` quickly computes **descriptive statistics of a numerical variable grouped by a categorical variable**.
+
+
+**Template:**
+```r
+num_by_cat_stats(DATA, NUM, CAT)
+```
+
+- `DATA`: the data frame (e.g., `penguins`)
+- `NUM`: the numerical variable you want to summarize (e.g., `body_mass_g`)
+- `CAT`: the categorical variable that defines groups (e.g., `species`)
+
+**Example:**
+
+```{r}
+num_by_cat_stats(penguins, body_mass_g, species)
+```
+
+
+
+
+# Strength & correlation
+
+Correlation (two numerical variables): $-1 \le r \le 1$. For simple linear regression, $R^2 = r^2$.
+
+```{r}
+cor(penguins$body_mass_g, penguins$flipper_length_mm)
+```
+
+```{r}
+# R^2 helper
+r2(lm(body_mass_g ~ flipper_length_mm, data = penguins))
+```
+
+**Template:**
+
+```r
+# Correlation
+cor(DATA$Y, DATA$X)
+
+## R-Squared
+xlm <- lm(Y ~ X, data = DATA); 
+r2(xlm)
+```
+
+# Prediction
+
+Model: $\hat Y = \hat\beta_0 + \hat\beta_1 X$. Supply new X to get a prediction $\hat Y$.
+
+**Template:**
+
+```r
+xlm <- lm(Y ~ X, data = DATA)
+predict(xlm, newdata = data.frame(X = VAL))
+```
+
+**Examples:**
+
+```{r}
+xlm1 <- lm(body_mass_g ~ species, data = penguins)
+predict(xlm1, newdata = data.frame(species = "Gentoo"))
+```
+
+```{r}
+xlm2 <- lm(body_mass_g ~ flipper_length_mm, data = penguins)
+predict(xlm2, newdata = data.frame(flipper_length_mm = 190))
+```
+
+
+# Modeling outcomes: Taylor Swift songs
+
+```{r}
+# Density of danceability
+ggplot(taylor_album_songs, aes(danceability)) +
+  geom_density()
+```
+
+```{r}
+# By mode_name (Major/Minor)
+taylor_album_songs |>
+  drop_na(mode_name) |>
+  ggplot(aes(danceability)) +
+  geom_density() +
+  facet_wrap(~ mode_name)
+```
+
+```{r}
+# Danceability vs valence
+ggplot(taylor_album_songs, aes(valence, danceability)) +
+  geom_point(alpha = .6) +
+  geom_smooth(method = "lm", se = TRUE)
+```
+
+```{r}
+# Danceability vs energy
+ggplot(taylor_album_songs, aes(energy, danceability)) +
+  geom_point(alpha = .6) +
+  geom_smooth(method = "lm", se = TRUE)
+```
+
+---
+
+# Multiple linear regression (MLR)
+
+Model: $Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \varepsilon$
+
+**Template:**
+
+```r
+lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
+```
+
+**Example: danceability ~ mode_name + valence + energy**
+
+```{r}
+# Example: danceability ~ mode_name + valence + energy
+mlm <- lm(danceability ~ mode_name + valence + energy, data = taylor_album_songs)
+summary(mlm)$coefficients
+```
+
+Interpretation: each $\hat\beta_i$ is the expected change in Y per 1‑unit increase in $X_i$, **holding other predictors fixed**.
+For categorical predictors (e.g., `mode_name`), coefficients are differences from the reference level.
+
+
+# Adjusted R^2
+
+$$R^2 = 1 - \frac{\text{Var(resid)}}{\text{Var}(Y)}, \quad
+R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-1}{n-k-1}$$
+
+```{r}
+# Helpers from csucistats
+ar2(mlm)
+```
+
+# Appendix: quick templates (copy‑paste)
+
+```r
+# Null model
+lm(Y ~ 1, data = DATA)
+```
+
+```r
+# Simple linear regression
+lm(Y ~ X, data = DATA)
+```
+
+```r
+# Categorical predictor
+lm(Y ~ X, data = DATA)           # X is factor
+lm(Y ~ factor(X), data = DATA)   # coerce X to factor
+```
+
+```r
+# Group summaries
+num_by_cat_stats(DATA, NUM, CAT)
+```
+
+```r
+# Correlation
+cor(DATA$Y, DATA$X, use = "complete.obs")
+```
+```r
+# Adjusted R^2
+m <- lm(Y ~ X, data = DATA); r2(m)
+```
+
+```r
+# Multiple linear regression
+lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
+```
+
+```r
+# Adjusted R^2
+m <- lm(Y ~ X1 + X2, data = DATA)
+ar2(m)
+```
+
+```r
+# Prediction
+m <- lm(Y ~ X, data = DATA)
+predict(m, newdata = data.frame(X = VAL))
+```
