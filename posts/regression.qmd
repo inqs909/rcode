@@ -1,9 +1,6 @@
 ---
 title: "Regression Models"
-subtitle: "Explaining variation, simple & multiple linear models, categorical predictors, correlation, prediction"
-description: |
-  A student-friendly Quarto handout based on your lecture outline. Includes the
-  penguins and Taylor datasets, runnable examples, and copy‑paste templates.
+description: "Explaining variation, simple & multiple linear models, categorical predictors, correlation, prediction"
 format:
   html:
     toc: true
@@ -47,9 +44,23 @@ library(DT)
 
 penguins <- palmerpenguins::penguins |> tidyr::drop_na()
 theme_set(theme_bw())
-
-DT::datatable(head(penguins, 6), options = list(dom = "p"))
 ```
+
+## Google Colab
+
+Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.
+
+```r
+# This code will load the R packages we will use
+install.packages(c("csucistats", "taylor", "palmerpenguins"),
+                 repos = c("https://inqs909.r-universe.dev", 
+                           "https://cloud.r-project.org"))
+library(csucistats)
+library(tidyverse)
+library(taylor)
+library(palmerpenguins)
+```
+
 
 ## Using the templates: what to change
 

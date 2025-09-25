@@ -1,9 +1,6 @@
 ---
 title: "Numerical Data"
-subtitle: "Descriptive stats & visualizations for quantitative variables (mean/median, spread, hist/box/scatter)"
-description: |
-  A student-friendly reference with concise explanations, runnable examples,
-  and copy-paste templates for summarizing and visualizing numerical data in R.
+description: "Descriptive stats & visualizations for quantitative variables (mean/median, spread, hist/box/scatter)"
 format:
   html:
     toc: true
@@ -56,6 +53,8 @@ Use the **Copy** button on each code chunk. Most topics have a **template** firs
 :::
 
 # Google Colab Setup
+
+Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.
 
 ```{r}
 #| eval: false

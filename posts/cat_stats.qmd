@@ -1,9 +1,6 @@
 ---
 title: "Categorical Data"
-subtitle: "Descriptive summaries & visualizations (freq, proportion, crosstabs, bar/pie/mosaic/waffle)"
-description: |
-  A student‑friendly reference with concise explanations, runnable examples,
-  and copy‑paste templates for analyzing and visualizing categorical data in R.
+description: "Descriptive summaries & visualizations (freq, proportion, crosstabs, bar/pie/mosaic/waffle)"
 format:
   html:
     toc: true
@@ -57,6 +54,10 @@ Use the **Copy** button on each code chunk. Many chunks include a **template** v
 
 
 # Google Colab Setup
+
+
+Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.
+
 
 ```{r}
 #| eval: false

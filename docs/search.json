@@ -4,7 +4,14 @@
     "href": "posts/regression.html",
     "title": "Regression Models",
     "section": "",
-    "text": "DATA → your data frame/tibble (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nX, X1, X2, …, Xp → predictor variables (e.g., flipper_length_mm, species).\n\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
+    "text": "Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.\n# This code will load the R packages we will use\ninstall.packages(c(\"csucistats\", \"taylor\", \"palmerpenguins\"),\n                 repos = c(\"https://inqs909.r-universe.dev\", \n                           \"https://cloud.r-project.org\"))\nlibrary(csucistats)\nlibrary(tidyverse)\nlibrary(taylor)\nlibrary(palmerpenguins)\n\n\n\n\nDATA → your data frame/tibble (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nX, X1, X2, …, Xp → predictor variables (e.g., flipper_length_mm, species).\n\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
+  },
+  {
+    "objectID": "posts/regression.html#google-colab",
+    "href": "posts/regression.html#google-colab",
+    "title": "Regression Models",
+    "section": "",
+    "text": "Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.\n# This code will load the R packages we will use\ninstall.packages(c(\"csucistats\", \"taylor\", \"palmerpenguins\"),\n                 repos = c(\"https://inqs909.r-universe.dev\", \n                           \"https://cloud.r-project.org\"))\nlibrary(csucistats)\nlibrary(tidyverse)\nlibrary(taylor)\nlibrary(palmerpenguins)"
   },
   {
     "objectID": "posts/regression.html#using-the-templates-what-to-change",
