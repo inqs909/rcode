@@ -156,35 +156,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">1</span> Setup</a></li>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals"><span class="header-section-number">2</span> Learning goals</a></li>
-  <li><a href="#google-colab-setup" id="toc-google-colab-setup" class="nav-link" data-scroll-target="#google-colab-setup"><span class="header-section-number">3</span> Google Colab Setup</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#google-colab-setup" id="toc-google-colab-setup" class="nav-link" data-scroll-target="#google-colab-setup"><span class="header-section-number">2</span> Google Colab Setup</a>
   <ul class="collapse">
-  <li><a href="#data-for-this-handout" id="toc-data-for-this-handout" class="nav-link" data-scroll-target="#data-for-this-handout"><span class="header-section-number">3.1</span> Data for this handout</a></li>
-  <li><a href="#using-the-templates-what-to-change" id="toc-using-the-templates-what-to-change" class="nav-link" data-scroll-target="#using-the-templates-what-to-change"><span class="header-section-number">3.2</span> Using the templates: what to change</a>
+  <li><a href="#data-for-this-handout" id="toc-data-for-this-handout" class="nav-link" data-scroll-target="#data-for-this-handout"><span class="header-section-number">2.1</span> Data for this handout</a></li>
+  <li><a href="#using-the-templates-what-to-change" id="toc-using-the-templates-what-to-change" class="nav-link" data-scroll-target="#using-the-templates-what-to-change"><span class="header-section-number">2.2</span> Using the templates: what to change</a>
   <ul class="collapse">
-  <li><a href="#quick-replace-checklist" id="toc-quick-replace-checklist" class="nav-link" data-scroll-target="#quick-replace-checklist"><span class="header-section-number">3.2.1</span> Quick replace checklist</a></li>
+  <li><a href="#quick-replace-checklist" id="toc-quick-replace-checklist" class="nav-link" data-scroll-target="#quick-replace-checklist"><span class="header-section-number">2.2.1</span> Quick replace checklist</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">4</span> Summary statistics</a>
+  <li><a href="#summary-descriptive-statistics" id="toc-summary-descriptive-statistics" class="nav-link" data-scroll-target="#summary-descriptive-statistics"><span class="header-section-number">3</span> Summary (descriptive) statistics</a>
   <ul class="collapse">
-  <li><a href="#what-is-numerical-data" id="toc-what-is-numerical-data" class="nav-link" data-scroll-target="#what-is-numerical-data"><span class="header-section-number">4.1</span> What is numerical data?</a></li>
-  <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link" data-scroll-target="#central-tendency"><span class="header-section-number">4.2</span> Central tendency</a></li>
-  <li><a href="#variation-spread" id="toc-variation-spread" class="nav-link" data-scroll-target="#variation-spread"><span class="header-section-number">4.3</span> Variation (spread)</a></li>
-  <li><a href="#summary-statistics-1" id="toc-summary-statistics-1" class="nav-link" data-scroll-target="#summary-statistics-1"><span class="header-section-number">4.4</span> Summary Statistics</a></li>
-  <li><a href="#mean-median-variance-sd" id="toc-mean-median-variance-sd" class="nav-link" data-scroll-target="#mean-median-variance-sd"><span class="header-section-number">4.5</span> Mean, median, variance, sd</a></li>
-  <li><a href="#quantiles" id="toc-quantiles" class="nav-link" data-scroll-target="#quantiles"><span class="header-section-number">4.6</span> Quantiles</a></li>
+  <li><a href="#what-is-numerical-data" id="toc-what-is-numerical-data" class="nav-link" data-scroll-target="#what-is-numerical-data"><span class="header-section-number">3.1</span> What is numerical data?</a></li>
+  <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link" data-scroll-target="#central-tendency"><span class="header-section-number">3.2</span> Central tendency</a></li>
+  <li><a href="#variation-spread" id="toc-variation-spread" class="nav-link" data-scroll-target="#variation-spread"><span class="header-section-number">3.3</span> Variation (spread)</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">3.4</span> Summary Statistics</a></li>
+  <li><a href="#mean-median-variance-sd" id="toc-mean-median-variance-sd" class="nav-link" data-scroll-target="#mean-median-variance-sd"><span class="header-section-number">3.5</span> Mean, median, variance, sd</a></li>
+  <li><a href="#quantiles" id="toc-quantiles" class="nav-link" data-scroll-target="#quantiles"><span class="header-section-number">3.6</span> Quantiles</a></li>
   </ul></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">5</span> Data visualization</a>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">4</span> Data visualization</a>
   <ul class="collapse">
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">5.1</span> Histograms</a></li>
-  <li><a href="#kernel-density-plot" id="toc-kernel-density-plot" class="nav-link" data-scroll-target="#kernel-density-plot"><span class="header-section-number">5.2</span> Kernel density plot</a></li>
-  <li><a href="#box-plots" id="toc-box-plots" class="nav-link" data-scroll-target="#box-plots"><span class="header-section-number">5.3</span> Box plots</a></li>
-  <li><a href="#dot-plots" id="toc-dot-plots" class="nav-link" data-scroll-target="#dot-plots"><span class="header-section-number">5.4</span> Dot plots</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">4.1</span> Histograms</a></li>
+  <li><a href="#density-plot" id="toc-density-plot" class="nav-link" data-scroll-target="#density-plot"><span class="header-section-number">4.2</span> Density plot</a></li>
+  <li><a href="#box-plots" id="toc-box-plots" class="nav-link" data-scroll-target="#box-plots"><span class="header-section-number">4.3</span> Box plots</a></li>
+  <li><a href="#dot-plots" id="toc-dot-plots" class="nav-link" data-scroll-target="#dot-plots"><span class="header-section-number">4.4</span> Dot plots</a></li>
+  <li><a href="#scatter-plots-two-numerical-variables" id="toc-scatter-plots-two-numerical-variables" class="nav-link" data-scroll-target="#scatter-plots-two-numerical-variables"><span class="header-section-number">4.5</span> Scatter plots (two numerical variables)</a></li>
   </ul></li>
-  <li><a href="#scatter-plots-two-numerical-variables" id="toc-scatter-plots-two-numerical-variables" class="nav-link" data-scroll-target="#scatter-plots-two-numerical-variables"><span class="header-section-number">6</span> Scatter plots (two numerical variables)</a></li>
-  <li><a href="#quick-troubleshooting" id="toc-quick-troubleshooting" class="nav-link" data-scroll-target="#quick-troubleshooting"><span class="header-section-number">7</span> Quick troubleshooting</a></li>
-  <li><a href="#appendix-minimal-templates-copypaste" id="toc-appendix-minimal-templates-copypaste" class="nav-link" data-scroll-target="#appendix-minimal-templates-copypaste"><span class="header-section-number">8</span> Appendix: minimal templates (copy‑paste)</a></li>
+  <li><a href="#quick-troubleshooting" id="toc-quick-troubleshooting" class="nav-link" data-scroll-target="#quick-troubleshooting"><span class="header-section-number">5</span> Quick troubleshooting</a></li>
+  <li><a href="#appendix-minimal-templates-copypaste" id="toc-appendix-minimal-templates-copypaste" class="nav-link" data-scroll-target="#appendix-minimal-templates-copypaste"><span class="header-section-number">6</span> Appendix: minimal templates (copy‑paste)</a>
+  <ul class="collapse">
+  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics"><span class="header-section-number">6.1</span> Basic Statistics</a></li>
+  <li><a href="#summary-statistics-csucistats" id="toc-summary-statistics-csucistats" class="nav-link" data-scroll-target="#summary-statistics-csucistats"><span class="header-section-number">6.2</span> Summary Statistics (csucistats)</a></li>
+  <li><a href="#histogram-frequency-based" id="toc-histogram-frequency-based" class="nav-link" data-scroll-target="#histogram-frequency-based"><span class="header-section-number">6.3</span> Histogram (Frequency-based)</a></li>
+  <li><a href="#histogram-density-based" id="toc-histogram-density-based" class="nav-link" data-scroll-target="#histogram-density-based"><span class="header-section-number">6.4</span> Histogram (density-based)</a></li>
+  <li><a href="#histogram-frequency-based-with-bins" id="toc-histogram-frequency-based-with-bins" class="nav-link" data-scroll-target="#histogram-frequency-based-with-bins"><span class="header-section-number">6.5</span> Histogram (Frequency-based) with bins</a></li>
+  <li><a href="#histogram-density-based-with-bins" id="toc-histogram-density-based-with-bins" class="nav-link" data-scroll-target="#histogram-density-based-with-bins"><span class="header-section-number">6.6</span> Histogram (Density-based) with bins</a></li>
+  <li><a href="#density-plot-1" id="toc-density-plot-1" class="nav-link" data-scroll-target="#density-plot-1"><span class="header-section-number">6.7</span> Density Plot</a></li>
+  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot"><span class="header-section-number">6.8</span> Box plot</a></li>
+  <li><a href="#dot-plot" id="toc-dot-plot" class="nav-link" data-scroll-target="#dot-plot"><span class="header-section-number">6.9</span> Dot plot</a></li>
+  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">6.10</span> Scatter Plot</a></li>
+  <li><a href="#scatter-plot-trend-line" id="toc-scatter-plot-trend-line" class="nav-link" data-scroll-target="#scatter-plot-trend-line"><span class="header-section-number">6.11</span> Scatter Plot + trend line</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -215,11 +227,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="setup" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Setup</h1>
-</section>
-<section id="learning-goals" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Learning goals</h1>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <ul>
 <li>Identify <strong>numerical (quantitative)</strong> variables and read their distributions.</li>
 <li>Compute core descriptive statistics: <strong>min, Q1, median (Q2), mean, Q3, max, IQR, variance, sd</strong>.</li>
@@ -241,8 +250,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="google-colab-setup" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Google Colab Setup</h1>
+<section id="google-colab-setup" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Google Colab Setup</h1>
 <p>Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code will load the R packages we will use</span></span>
@@ -262,8 +271,8 @@ Tip
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ThemePark)</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggthemes)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data-for-this-handout" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="data-for-this-handout"><span class="header-section-number">3.1</span> Data for this handout</h2>
+<section id="data-for-this-handout" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="data-for-this-handout"><span class="header-section-number">2.1</span> Data for this handout</h2>
 <p>We will use the <strong>Mr.&nbsp;Trash Wheel</strong> dataset from TidyTuesday.</p>
 <div class="cell">
 <details class="code-fold">
@@ -279,8 +288,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="using-the-templates-what-to-change" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="using-the-templates-what-to-change"><span class="header-section-number">3.2</span> Using the templates: what to change</h2>
+<section id="using-the-templates-what-to-change" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="using-the-templates-what-to-change"><span class="header-section-number">2.2</span> Using the templates: what to change</h2>
 <p>Use this legend whenever you see a <strong>Template</strong> code block.</p>
 <ul>
 <li><p><strong><code>DATA</code></strong> → replace with your data frame/tibble name (e.g., <code>trashwheel</code>).</p></li>
@@ -292,8 +301,8 @@ Tip
 <li><p><strong><code>VAR1</code></strong> and <strong><code>VAR2</code></strong> → replace with the <strong>x</strong> and <strong>y</strong> variables for scatter plots (e.g., <code>PlasticBottles</code>, <code>PlasticBags</code>).</p></li>
 <li><p><strong><code>bins = X</code></strong>, <strong><code>binwidth = X</code></strong> → choose a sensible number/width for your data scale.</p></li>
 </ul>
-<section id="quick-replace-checklist" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="quick-replace-checklist"><span class="header-section-number">3.2.1</span> Quick replace checklist</h3>
+<section id="quick-replace-checklist" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="quick-replace-checklist"><span class="header-section-number">2.2.1</span> Quick replace checklist</h3>
 <ol type="1">
 <li><p>Swap <strong><code>DATA</code></strong> for your data frame (usually <code>trashwheel</code>).</p></li>
 <li><p>Swap <strong><code>VAR</code></strong> for your numerical column (e.g., <code>PlasticBottles</code>).</p></li>
@@ -303,10 +312,10 @@ Tip
 </section>
 </section>
 </section>
-<section id="summary-statistics" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Summary statistics</h1>
-<section id="what-is-numerical-data" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="what-is-numerical-data"><span class="header-section-number">4.1</span> What is numerical data?</h2>
+<section id="summary-descriptive-statistics" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Summary (descriptive) statistics</h1>
+<section id="what-is-numerical-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="what-is-numerical-data"><span class="header-section-number">3.1</span> What is numerical data?</h2>
 <p>Numerical (quantitative) variables record numbers for which arithmetic makes sense (e.g., items collected, weights, costs).</p>
 <p><strong>Example (first few values):</strong></p>
 <div class="cell">
@@ -316,16 +325,16 @@ Tip
 </div>
 </div>
 </section>
-<section id="central-tendency" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="central-tendency"><span class="header-section-number">4.2</span> Central tendency</h2>
+<section id="central-tendency" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="central-tendency"><span class="header-section-number">3.2</span> Central tendency</h2>
 <p><strong>Central tendency</strong> summarizes a distribution with a representative value (mean or median).</p>
 <ul>
 <li><p><strong>Median (Q2)</strong> is the 50th percentile: half the data lie below it.</p></li>
 <li><p><strong>Mean</strong> is the arithmetic average: sensitive to outliers/skew.</p></li>
 </ul>
 </section>
-<section id="variation-spread" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="variation-spread"><span class="header-section-number">4.3</span> Variation (spread)</h2>
+<section id="variation-spread" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="variation-spread"><span class="header-section-number">3.3</span> Variation (spread)</h2>
 <p><strong>Variation</strong> describes how far data tend to fall from the center.</p>
 <ul>
 <li><p><strong>Range</strong> = max − min</p></li>
@@ -333,8 +342,8 @@ Tip
 <li><p><strong>Variance/SD</strong> measure average squared/root‑mean‑squared distance from the mean.</p></li>
 </ul>
 </section>
-<section id="summary-statistics-1" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="summary-statistics-1"><span class="header-section-number">4.4</span> Summary Statistics</h2>
+<section id="summary-statistics" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">3.4</span> Summary Statistics</h2>
 <p><strong>Template:</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">num_stats</span>(DATA<span class="sc">$</span>VAR)           <span class="co"># five-number summary + mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
@@ -348,8 +357,8 @@ Tip
 <p><strong>Alternative:</strong></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(DATA<span class="sc">$</span>VAR)           <span class="co"># five-number summary + mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="mean-median-variance-sd" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="mean-median-variance-sd"><span class="header-section-number">4.5</span> Mean, median, variance, sd</h2>
+<section id="mean-median-variance-sd" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="mean-median-variance-sd"><span class="header-section-number">3.5</span> Mean, median, variance, sd</h2>
 <p><strong>Template:</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DATA<span class="sc">$</span>VAR)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(DATA<span class="sc">$</span>VAR)</span>
@@ -380,18 +389,15 @@ Tip
 </div>
 </div>
 </section>
-<section id="quantiles" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="quantiles"><span class="header-section-number">4.6</span> Quantiles</h2>
+<section id="quantiles" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="quantiles"><span class="header-section-number">3.6</span> Quantiles</h2>
 <p><strong>Template:</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(DATA<span class="sc">$</span>VAR, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>#&gt; Error: object 'DATA' not found</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(DATA<span class="sc">$</span>VAR, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(trashwheel<span class="sc">$</span>PlasticBottles, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(trashwheel<span class="sc">$</span>PlasticBottles, </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    25%    50%    75% 
 #&gt;  987.5 1900.0 2900.0</code></pre>
@@ -399,18 +405,37 @@ Tip
 </div>
 </section>
 </section>
-<section id="data-visualization" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Data visualization</h1>
-<section id="histograms" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="histograms"><span class="header-section-number">5.1</span> Histograms</h2>
+<section id="data-visualization" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Data visualization</h1>
+<section id="histograms" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="histograms"><span class="header-section-number">4.1</span> Histograms</h2>
 <p>A <strong>histogram</strong> shows the distribution by binning values and counting how many fall in each bin.</p>
-<p><strong>Template (choose either bins OR binwidth):</strong></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> X) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Template (Frequency-based):</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> X) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: Removed 1 row containing non-finite outside the scale range
+#&gt; (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="num_stats_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Template (Density-based):</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Example:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: Removed 1 row containing non-finite outside the scale range
 #&gt; (`stat_bin()`).</code></pre>
@@ -424,15 +449,15 @@ Tip
 </div>
 </div>
 </section>
-<section id="kernel-density-plot" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="kernel-density-plot"><span class="header-section-number">5.2</span> Kernel density plot</h2>
+<section id="density-plot" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="density-plot"><span class="header-section-number">4.2</span> Density plot</h2>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles)) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: Removed 1 row containing non-finite outside the scale range
 #&gt; (`stat_density()`).</code></pre>
@@ -446,16 +471,16 @@ Tip
 </div>
 </div>
 </section>
-<section id="box-plots" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="box-plots"><span class="header-section-number">5.3</span> Box plots</h2>
+<section id="box-plots" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="box-plots"><span class="header-section-number">4.3</span> Box plots</h2>
 <p>A <strong>box plot</strong> summarizes median, quartiles, and potential outliers.</p>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(PlasticBottles)) <span class="sc">+</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(PlasticBottles)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: Removed 1 row containing non-finite outside the scale range
 #&gt; (`stat_boxplot()`).</code></pre>
@@ -469,16 +494,16 @@ Tip
 </div>
 </div>
 </section>
-<section id="dot-plots" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="dot-plots"><span class="header-section-number">5.4</span> Dot plots</h2>
+<section id="dot-plots" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="dot-plots"><span class="header-section-number">4.4</span> Dot plots</h2>
 <p>A <strong>dot plot</strong> stacks dots within bins to show distribution.</p>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> X)  <span class="co"># choose a sensible binwidth</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> X)  <span class="co"># choose a sensible binwidth</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles)) <span class="sc">+</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: Removed 1 row containing missing values or values outside the scale range
 #&gt; (`stat_bindot()`).</code></pre>
@@ -492,17 +517,16 @@ Tip
 </div>
 </div>
 </section>
-</section>
-<section id="scatter-plots-two-numerical-variables" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Scatter plots (two numerical variables)</h1>
+<section id="scatter-plots-two-numerical-variables" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="scatter-plots-two-numerical-variables"><span class="header-section-number">4.5</span> Scatter plots (two numerical variables)</h2>
 <p>A <strong>scatter plot</strong> reveals association, trend direction, and form.</p>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles, <span class="at">y =</span> PlasticBags)) <span class="sc">+</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles, <span class="at">y =</span> PlasticBags)) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: Removed 1 row containing missing values or values outside the scale range
 #&gt; (`geom_point()`).</code></pre>
@@ -517,9 +541,9 @@ Tip
 </div>
 <p><strong>Add a trend line (optional):</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles, <span class="at">y =</span> PlasticBags)) <span class="sc">+</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trashwheel, <span class="fu">aes</span>(<span class="at">x =</span> PlasticBottles, <span class="at">y =</span> PlasticBags)) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
@@ -540,8 +564,9 @@ Tip
 </div>
 </div>
 </section>
-<section id="quick-troubleshooting" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Quick troubleshooting</h1>
+</section>
+<section id="quick-troubleshooting" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Quick troubleshooting</h1>
 <ul>
 <li><p><strong>Lots of NAs?</strong> Add <code>na.rm = TRUE</code> where available or filter rows with <code>drop_na(VAR)</code>.</p></li>
 <li><p><strong>Histogram looks too blocky/smooth?</strong> Tune <code>bins</code> or <code>binwidth</code>.</p></li>
@@ -549,39 +574,123 @@ Tip
 <li><p><strong>Outliers change the mean a lot.</strong> Consider reporting <strong>median</strong> or using <strong>robust</strong> summaries.</p></li>
 </ul>
 </section>
-<section id="appendix-minimal-templates-copypaste" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Appendix: minimal templates (copy‑paste)</h1>
+<section id="appendix-minimal-templates-copypaste" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Appendix: minimal templates (copy‑paste)</h1>
 <p>Each template below has <strong>placeholders</strong> in ALL CAPS (e.g., <code>DATA</code>, <code>VAR</code>, <code>VAR1</code>, <code>VAR2</code>). Replace them with your dataset name and variable names.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean / Median / Var / SD</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DATA<span class="sc">$</span>VAR)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(DATA<span class="sc">$</span>VAR)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(DATA<span class="sc">$</span>VAR)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(DATA<span class="sc">$</span>VAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantiles</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(DATA<span class="sc">$</span>VAR, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-liner (csucistats)</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">num_stats</span>(DATA<span class="sc">$</span>VAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dot plot</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span> </span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter + trend line</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="basic-statistics" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="basic-statistics"><span class="header-section-number">6.1</span> Basic Statistics</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean / Median / Var / SD</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DATA<span class="sc">$</span>VAR)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(DATA<span class="sc">$</span>VAR)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(DATA<span class="sc">$</span>VAR)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(DATA<span class="sc">$</span>VAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantiles</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(DATA<span class="sc">$</span>VAR, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="summary-statistics-csucistats" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="summary-statistics-csucistats"><span class="header-section-number">6.2</span> Summary Statistics (csucistats)</h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">num_stats</span>(DATA<span class="sc">$</span>VAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="histogram-frequency-based" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="histogram-frequency-based"><span class="header-section-number">6.3</span> Histogram (Frequency-based)</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="histogram-density-based" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="histogram-density-based"><span class="header-section-number">6.4</span> Histogram (density-based)</h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="histogram-frequency-based-with-bins" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="histogram-frequency-based-with-bins"><span class="header-section-number">6.5</span> Histogram (Frequency-based) with bins</h2>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+<li><code>X</code> → the number of bins (e.g., 15-30)</li>
+</ul>
+</section>
+<section id="histogram-density-based-with-bins" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="histogram-density-based-with-bins"><span class="header-section-number">6.6</span> Histogram (Density-based) with bins</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+<li><code>X</code> → the number of bins (e.g., 15-30)</li>
+</ul>
+</section>
+<section id="density-plot-1" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="density-plot-1"><span class="header-section-number">6.7</span> Density Plot</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="box-plot" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="box-plot"><span class="header-section-number">6.8</span> Box plot</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(VAR)) <span class="sc">+</span> </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="dot-plot" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="dot-plot"><span class="header-section-number">6.9</span> Dot plot</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+</ul>
+</section>
+<section id="scatter-plot" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="scatter-plot"><span class="header-section-number">6.10</span> Scatter Plot</h2>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR1</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+<li><code>VAR2</code> → a single categorical variable (e.g., <code>PlasticBags</code>).</li>
+</ul>
+</section>
+<section id="scatter-plot-trend-line" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="scatter-plot-trend-line"><span class="header-section-number">6.11</span> Scatter Plot + trend line</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>trashwheel</code>).</li>
+<li><code>VAR1</code> → a single categorical variable (e.g., <code>PlasticBottles</code>).</li>
+<li><code>VAR2</code> → a single categorical variable (e.g., <code>PlasticBags</code>).</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
