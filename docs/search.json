@@ -2,72 +2,156 @@
   {
     "objectID": "posts/regression.html",
     "href": "posts/regression.html",
-    "title": "Regression Models",
+    "title": "Linear Regression Models",
     "section": "",
-    "text": "Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.\n# This code will load the R packages we will use\ninstall.packages(c(\"csucistats\", \"taylor\", \"palmerpenguins\"),\n                 repos = c(\"https://inqs909.r-universe.dev\", \n                           \"https://cloud.r-project.org\"))\nlibrary(csucistats)\nlibrary(tidyverse)\nlibrary(taylor)\nlibrary(palmerpenguins)\n\n\n\n\nDATA → your data frame/tibble (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nX, X1, X2, …, Xp → predictor variables (e.g., flipper_length_mm, species).\n\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
+    "text": "Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.\n# This code will load the R packages we will use\ninstall.packages(c(\"csucistats\", \"taylor\", \"palmerpenguins\"),\n                 repos = c(\"https://inqs909.r-universe.dev\", \n                           \"https://cloud.r-project.org\"))\nlibrary(csucistats)\nlibrary(tidyverse)\nlibrary(taylor)\nlibrary(palmerpenguins)\n\n\n\n\nDATA → your data frame/tibble (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX, X1, X2, …, Xp → predictor variables (e.g flipper_length_mm, species)\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
   },
   {
     "objectID": "posts/regression.html#google-colab",
     "href": "posts/regression.html#google-colab",
-    "title": "Regression Models",
+    "title": "Linear Regression Models",
     "section": "",
     "text": "Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.\n# This code will load the R packages we will use\ninstall.packages(c(\"csucistats\", \"taylor\", \"palmerpenguins\"),\n                 repos = c(\"https://inqs909.r-universe.dev\", \n                           \"https://cloud.r-project.org\"))\nlibrary(csucistats)\nlibrary(tidyverse)\nlibrary(taylor)\nlibrary(palmerpenguins)"
   },
   {
     "objectID": "posts/regression.html#using-the-templates-what-to-change",
     "href": "posts/regression.html#using-the-templates-what-to-change",
-    "title": "Regression Models",
+    "title": "Linear Regression Models",
     "section": "",
-    "text": "DATA → your data frame/tibble (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nX, X1, X2, …, Xp → predictor variables (e.g., flipper_length_mm, species).\n\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
+    "text": "DATA → your data frame/tibble (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX, X1, X2, …, Xp → predictor variables (e.g flipper_length_mm, species)\nFor categorical predictors: ensure the predictor is a factor (use factor(X) if needed)."
   },
   {
     "objectID": "posts/regression.html#explaining-variation",
     "href": "posts/regression.html#explaining-variation",
-    "title": "Regression Models",
+    "title": "Linear Regression Models",
     "section": "2.1 Explaining variation",
-    "text": "2.1 Explaining variation\nThis is the process of trying to reduce unexplained variation in an outcome by using informative predictors — think getting it less wrong with an educated guess.\n\n# One-variable view\nggplot(penguins, aes(body_mass_g)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\n# Same variable, grouped by a category (species)\nggplot(penguins, aes(body_mass_g, fill = species)) +\n  geom_density(alpha = .5)"
+    "text": "2.1 Explaining variation\nThis is the process of trying to reduce unexplained variation in an outcome by using informative predictors — think getting it less wrong with an educated guess.\n\nggplot(penguins, aes(body_mass_g)) +\n  geom_density()\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\nIf we know some information, we can get less wrong over time.\n\n# Same variable, grouped by a category (species)\nggplot(penguins, aes(body_mass_g, fill = species)) +\n  geom_density(alpha = .5)"
   },
   {
-    "objectID": "posts/regression.html#visualization-1d-vs.-2d",
-    "href": "posts/regression.html#visualization-1d-vs.-2d",
-    "title": "Regression Models",
-    "section": "4.1 Visualization (1D vs. 2D)",
-    "text": "4.1 Visualization (1D vs. 2D)\n\n# 1-D: distribution of Y\nggplot(penguins, aes(body_mass_g)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\n# 2-D: density of (X, Y)\nggplot(penguins, \n       aes(x = flipper_length_mm, y = body_mass_g, fill = after_stat(level))) +\n  stat_density_2d(geom = \"polygon\")"
+    "objectID": "posts/regression.html#a-simple-model-intercept-only",
+    "href": "posts/regression.html#a-simple-model-intercept-only",
+    "title": "Linear Regression Models",
+    "section": "2.2 A simple model (intercept-only)",
+    "text": "2.2 A simple model (intercept-only)\nWe believe the outcome (\\(Y\\)) is generated by an unknown data generated process (\\(DGP_1\\)): \\(Y \\sim DGP_1\\). A minimal model says all outcomes are generated from a number (labeled as \\(\\beta_0\\)) plus or minus some error (\\(\\varepsilon\\)):\n\\[ Y = \\beta_0 + \\varepsilon \\]\nThis is known as a simple model and the errors are simulated by a different DGP \\(\\varepsilon \\sim DGP_2\\). The simple model is unknown, so we construct and estimated simple model for our best guess on how the data is generated:\n\\[\n\\hat Y = \\hat\\beta_0\n\\]\nThe carats above the letters are known as hats, which means best guess.\n\n\n\n\n\n\nTip\n\n\n\nObserved vs. estimated:\n\nObserved \\(Y = \\beta_0 + \\varepsilon\\)\nEstimated \\(\\hat Y = \\hat\\beta_0\\)\n\n\n\n\n2.2.1 Fitting Simple Model\nTemplate:\nlm(Y ~ 1, data = DATA)\n\nDATA → your data (e.g., penguins).\n\nY → the outcome variable (e.g., body_mass_g).\n\nExample:\n\n# Fit the null (intercept-only) model\nm0 &lt;- lm(body_mass_g ~ 1, data = penguins)\nm0\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ 1, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt; (Intercept)  \n#&gt;        4207"
   },
   {
-    "objectID": "posts/regression.html#model-form",
-    "href": "posts/regression.html#model-form",
-    "title": "Regression Models",
-    "section": "4.2 Model form",
-    "text": "4.2 Model form\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\hat Y = \\hat\\beta_0 + \\hat\\beta_1 X.\n\\]\n\n# Scatter plot\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n# Add a least-squares line\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  stat_smooth(method = \"lm\", se = FALSE)\n\n\n\n\n\n\n\n\n\n# Fit the model\nm1 &lt;- lm(body_mass_g ~ flipper_length_mm, data = penguins)\nm1\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt;       (Intercept)  flipper_length_mm  \n#&gt;          -5872.09              50.15\n\n\nInterpretation:\n\nIntercept \\(\\hat\\beta_0\\): predicted Y when X = 0 (may not be meaningful).\n\nSlope \\(\\hat\\beta_1\\): change in Y for a 1‑unit increase in X, on average.\n\nTemplate:\nlm(Y ~ X, data = DATA)"
+    "objectID": "posts/regression.html#linear-regression-model-with-one-predictor",
+    "href": "posts/regression.html#linear-regression-model-with-one-predictor",
+    "title": "Linear Regression Models",
+    "section": "2.3 Linear regression model with one predictor",
+    "text": "2.3 Linear regression model with one predictor\nModel form:\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\hat Y = \\hat\\beta_0 + \\hat\\beta_1 X.\n\\]\n\n# Scatter plot\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n# Add a least-squares line\nggplot(penguins, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  stat_smooth(method = \"lm\", se = FALSE)\n\n\n\n\n\n\n\n\n\n# Fit the model\nm1 &lt;- lm(body_mass_g ~ flipper_length_mm, data = penguins)\nm1\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt;       (Intercept)  flipper_length_mm  \n#&gt;          -5872.09              50.15\n\n\nTemplate:\nlm(Y ~ X, data = DATA)"
   },
   {
     "objectID": "posts/regression.html#general-idea",
     "href": "posts/regression.html#general-idea",
-    "title": "Regression Models",
-    "section": "5.1 General idea",
-    "text": "5.1 General idea\n\nSuppose we have a categorical variable with C categories.\n\nWe create C − 1 dummy variables, each taking value:\n\n1 if the observation belongs to that category\n\n0 otherwise\n\n\nThe category without a dummy variable becomes the reference (baseline) group.\n\nExample: Penguin species:\nThe species variable has 3 categories: Adelie, Chinstrap, Gentoo.\nWe create two dummy variables:\n\n\\(D_1\\): 1 if Chinstrap, 0 otherwise\n\n\\(D_2\\): 1 if Gentoo, 0 otherwise\n\nAdelie is the reference (when both \\(D_1 = 0, D_2 = 0\\))\n\n\n\n\nSpecies\n\\(D_1\\) (Chinstrap)\n\\(D_2\\) (Gentoo)\n\n\n\n\nAdelie\n0\n0\n\n\nChinstrap\n1\n0\n\n\nGentoo\n0\n1"
+    "title": "Linear Regression Models",
+    "section": "3.1 General idea",
+    "text": "3.1 General idea\n\nSuppose we have a categorical variable with C categories.\n\nWe create C − 1 dummy variables, each taking value:\n\n1 if the observation belongs to that category\n\n0 otherwise\n\n\nThe category without a dummy variable becomes the reference (baseline) group.\n\nExample: Penguin species:\nThe species variable has 3 categories: Adelie, Chinstrap, Gentoo.\nWe create two dummy variables:\n\n\\(D_1\\): 1 if Chinstrap, 0 otherwise\n\n\\(D_2\\): 1 if Gentoo, 0 otherwise\n\nAdelie is the reference (when both \\(D_1 = 0, D_2 = 0\\))\n\n\n\n\nSpecies\n\\(D_1\\) (Chinstrap)\n\\(D_2\\) (Gentoo)\n\n\n\n\nAdelie\n0\n0\n\n\nChinstrap\n1\n0\n\n\nGentoo\n0\n1"
   },
   {
     "objectID": "posts/regression.html#regression-model-with-dummy-variables",
     "href": "posts/regression.html#regression-model-with-dummy-variables",
-    "title": "Regression Models",
-    "section": "5.2 Regression model with dummy variables",
-    "text": "5.2 Regression model with dummy variables\nIf we model penguin body mass (\\(Y\\)) with species:\n\\[\n\\hat Y_i = \\beta_0 + \\beta_1 D_{1i} + \\beta_2 D_{2i}\n\\]\n\n\\(\\beta_0\\): mean of Adelie (reference group)\n\n\\(\\beta_1\\): difference in mean body mass between Chinstrap and Adelie\n\n\\(\\beta_2\\): difference in mean body mass between Gentoo and Adelie\n\nPredictions:\n- Adelie: \\(\\hat Y = \\beta_0\\)\n- Chinstrap: \\(\\hat Y = \\beta_0 + \\beta_1\\)\n- Gentoo: \\(\\hat Y = \\beta_0 + \\beta_2\\)"
+    "title": "Linear Regression Models",
+    "section": "3.2 Regression model with dummy variables",
+    "text": "3.2 Regression model with dummy variables\nIf we model penguin body mass (\\(Y\\)) with species:\n\\[\n\\hat Y_i = \\beta_0 + \\beta_1 D_{1i} + \\beta_2 D_{2i}\n\\]\n\n\\(\\beta_0\\): mean of Adelie (reference group)\n\n\\(\\beta_1\\): difference in mean body mass between Chinstrap and Adelie\n\n\\(\\beta_2\\): difference in mean body mass between Gentoo and Adelie\n\nPredictions:\n- Adelie: \\(\\hat Y = \\beta_0\\)\n- Chinstrap: \\(\\hat Y = \\beta_0 + \\beta_1\\)\n- Gentoo: \\(\\hat Y = \\beta_0 + \\beta_2\\)"
   },
   {
     "objectID": "posts/regression.html#r-implementation",
     "href": "posts/regression.html#r-implementation",
-    "title": "Regression Models",
-    "section": "5.3 R Implementation",
-    "text": "5.3 R Implementation\nR automatically creates dummy variables when you use a factor in lm().\nThe first level of the factor is used as the reference group (by default).\n\n# Fit model with species (factor) as predictor\nm &lt;- lm(body_mass_g ~ species, data = penguins)\nsummary(m)\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ species, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -1142.44  -342.44   -33.09   307.56  1207.56 \n#&gt; \n#&gt; Coefficients:\n#&gt;                  Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept)       3706.16      38.14  97.184   &lt;2e-16 ***\n#&gt; speciesChinstrap    26.92      67.65   0.398    0.691    \n#&gt; speciesGentoo     1386.27      56.91  24.359   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 460.8 on 330 degrees of freedom\n#&gt; Multiple R-squared:  0.6745, Adjusted R-squared:  0.6725 \n#&gt; F-statistic: 341.9 on 2 and 330 DF,  p-value: &lt; 2.2e-16\n\n\nTemplates:\nlm(Y ~ X, data = DATA)           # if X is already a factor\nlm(Y ~ factor(X), data = DATA)   # force X to be treated as factor"
+    "title": "Linear Regression Models",
+    "section": "3.3 R Implementation",
+    "text": "3.3 R Implementation\nR automatically creates dummy variables when you use a factor in lm().\nThe first level of the factor is used as the reference group (by default).\n\n# Fit model with species (factor) as predictor\nm &lt;- lm(body_mass_g ~ species, data = penguins)\nsummary(m)\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ species, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -1142.44  -342.44   -33.09   307.56  1207.56 \n#&gt; \n#&gt; Coefficients:\n#&gt;                  Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept)       3706.16      38.14  97.184   &lt;2e-16 ***\n#&gt; speciesChinstrap    26.92      67.65   0.398    0.691    \n#&gt; speciesGentoo     1386.27      56.91  24.359   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 460.8 on 330 degrees of freedom\n#&gt; Multiple R-squared:  0.6745, Adjusted R-squared:  0.6725 \n#&gt; F-statistic: 341.9 on 2 and 330 DF,  p-value: &lt; 2.2e-16\n\n\nTemplates:\nlm(Y ~ X, data = DATA)           # if X is already a factor\nlm(Y ~ factor(X), data = DATA)   # force X to be treated as factor"
   },
   {
     "objectID": "posts/regression.html#group-statistics",
     "href": "posts/regression.html#group-statistics",
-    "title": "Regression Models",
-    "section": "5.4 Group Statistics",
-    "text": "5.4 Group Statistics\nThe function num_by_cat_stats() quickly computes descriptive statistics of a numerical variable grouped by a categorical variable.\nTemplate:\nnum_by_cat_stats(DATA, NUM, CAT)\n\nDATA: the data frame (e.g., penguins)\nNUM: the numerical variable you want to summarize (e.g., body_mass_g)\nCAT: the categorical variable that defines groups (e.g., species)\n\nExample:\n\nnum_by_cat_stats(penguins, body_mass_g, species)\n\n#&gt;   Categories  min    q25     mean median  q75  max      sd      var   iqr\n#&gt; 1     Adelie 2850 3362.5 3706.164   3700 4000 4775 458.620 210332.4 637.5\n#&gt; 2  Chinstrap 2700 3487.5 3733.088   3700 3950 4800 384.335 147713.5 462.5\n#&gt; 3     Gentoo 3950 4700.0 5092.437   5050 5500 6300 501.476 251478.3 800.0\n#&gt;   missing\n#&gt; 1       0\n#&gt; 2       0\n#&gt; 3       0"
+    "title": "Linear Regression Models",
+    "section": "3.4 Group Statistics",
+    "text": "3.4 Group Statistics\nThe function num_by_cat_stats() quickly computes descriptive statistics of a numerical variable grouped by a categorical variable.\nTemplate:\nnum_by_cat_stats(DATA, NUM, CAT)\n\nDATA: the data frame (e.g., penguins)\nNUM: the numerical variable you want to summarize (e.g., body_mass_g)\nCAT: the categorical variable that defines groups (e.g., species)\n\nExample:\n\nnum_by_cat_stats(penguins, body_mass_g, species)\n\n#&gt;   Categories  min    q25     mean median  q75  max      sd      var   iqr\n#&gt; 1     Adelie 2850 3362.5 3706.164   3700 4000 4775 458.620 210332.4 637.5\n#&gt; 2  Chinstrap 2700 3487.5 3733.088   3700 3950 4800 384.335 147713.5 462.5\n#&gt; 3     Gentoo 3950 4700.0 5092.437   5050 5500 6300 501.476 251478.3 800.0\n#&gt;   missing\n#&gt; 1       0\n#&gt; 2       0\n#&gt; 3       0"
+  },
+  {
+    "objectID": "posts/regression.html#adjusted-r2",
+    "href": "posts/regression.html#adjusted-r2",
+    "title": "Linear Regression Models",
+    "section": "6.1 Adjusted \\(R^2\\)",
+    "text": "6.1 Adjusted \\(R^2\\)\n\\[R^2 = 1 - \\frac{\\text{Var(resid)}}{\\text{Var}(Y)}, \\quad\nR^2_{adj} = 1 - \\Big(\\frac{\\text{Var(resid)}}{\\text{Var}(Y)}\\Big) \\cdot \\frac{n-1}{n-k-1}\\]\n\nm &lt;- lm(danceability ~ mode_name + valence + energy, data = taylor_album_songs)\nar2(m)\n\n#&gt; [1] 0.09148268"
+  },
+  {
+    "objectID": "posts/regression.html#simple-model",
+    "href": "posts/regression.html#simple-model",
+    "title": "Linear Regression Models",
+    "section": "7.1 Simple Model",
+    "text": "7.1 Simple Model\nlm(Y ~ 1, data = DATA)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)"
+  },
+  {
+    "objectID": "posts/regression.html#simple-linear-regression",
+    "href": "posts/regression.html#simple-linear-regression",
+    "title": "Linear Regression Models",
+    "section": "7.2 Simple linear regression",
+    "text": "7.2 Simple linear regression\nlm(Y ~ X, data = DATA)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX → predictor variables (e.g flipper_length_mm)"
+  },
+  {
+    "objectID": "posts/regression.html#slr-categorical-predictor",
+    "href": "posts/regression.html#slr-categorical-predictor",
+    "title": "Linear Regression Models",
+    "section": "7.3 SLR: Categorical predictor",
+    "text": "7.3 SLR: Categorical predictor\nlm(Y ~ X, data = DATA) \n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX → predictor variables (e.g species)"
+  },
+  {
+    "objectID": "posts/regression.html#slr-categorical-predictor-create-factor",
+    "href": "posts/regression.html#slr-categorical-predictor-create-factor",
+    "title": "Linear Regression Models",
+    "section": "7.4 SLR: Categorical predictor (Create Factor)",
+    "text": "7.4 SLR: Categorical predictor (Create Factor)\nlm(Y ~ factor(X), data = DATA)   # coerce X to factor\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX → predictor variables (e.g species)"
+  },
+  {
+    "objectID": "posts/regression.html#numerical-statistics-by-categories",
+    "href": "posts/regression.html#numerical-statistics-by-categories",
+    "title": "Linear Regression Models",
+    "section": "7.5 Numerical Statistics by Categories",
+    "text": "7.5 Numerical Statistics by Categories\nnum_by_cat_stats(DATA, NUM, CAT)\n\nDATA: the data frame (e.g., penguins)\nNUM: the numerical variable you want to summarize (e.g., body_mass_g)\nCAT: the categorical variable that defines groups (e.g., species)"
+  },
+  {
+    "objectID": "posts/regression.html#correlation",
+    "href": "posts/regression.html#correlation",
+    "title": "Linear Regression Models",
+    "section": "7.6 Correlation",
+    "text": "7.6 Correlation\ncor(DATA$Y, DATA$X, use = \"complete.obs\")\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX → predictor variables (e.g flipper_length_mm)"
+  },
+  {
+    "objectID": "posts/regression.html#r2",
+    "href": "posts/regression.html#r2",
+    "title": "Linear Regression Models",
+    "section": "7.7 \\(R^2\\)",
+    "text": "7.7 \\(R^2\\)\nm &lt;- lm(Y ~ X, data = DATA)\nr2(m)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX → predictor variables (e.g flipper_length_mm)"
+  },
+  {
+    "objectID": "posts/regression.html#multiple-linear-regression",
+    "href": "posts/regression.html#multiple-linear-regression",
+    "title": "Linear Regression Models",
+    "section": "7.8 Multiple linear regression",
+    "text": "7.8 Multiple linear regression\nlm(Y ~ X1 + X2 + ... + Xp, data = DATA)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX1, X2, …, Xp → predictor variables (e.g flipper_length_mm, species)"
+  },
+  {
+    "objectID": "posts/regression.html#adjusted-r2-1",
+    "href": "posts/regression.html#adjusted-r2-1",
+    "title": "Linear Regression Models",
+    "section": "7.9 Adjusted \\(R^2\\)",
+    "text": "7.9 Adjusted \\(R^2\\)\n# Adjusted R^2\nm &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\nar2(m)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX1, X2, …, Xp → predictor variables (e.g flipper_length_mm, species)"
+  },
+  {
+    "objectID": "posts/regression.html#prediction-slr",
+    "href": "posts/regression.html#prediction-slr",
+    "title": "Linear Regression Models",
+    "section": "7.10 Prediction: SLR",
+    "text": "7.10 Prediction: SLR\nm &lt;- lm(Y ~ X, data = DATA)\npredict(m, newdata = data.frame(X = VAL))\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX → predictor variables (e.g flipper_length_mm)"
+  },
+  {
+    "objectID": "posts/regression.html#prediction-mlr",
+    "href": "posts/regression.html#prediction-mlr",
+    "title": "Linear Regression Models",
+    "section": "7.11 Prediction: MLR",
+    "text": "7.11 Prediction: MLR\nm &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\npredict(m, newdata = data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp))\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX1, X2, …, Xp → predictor variables (e.g flipper_length_mm, species)\nVAL1, VAL2, …, VALp → predictor values (e.g 150, \"Gentoo\")"
   },
   {
     "objectID": "posts/num_stats.html",
@@ -249,7 +333,7 @@
     "href": "index.html",
     "title": "R Code Reference",
     "section": "",
-    "text": "Numerical Data\n\n\n\n\n\n\n\n\n\n\nCategorical Data\n\n\n\n\n\n\n\n\n\n\nRegression Models\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Numerical Data\n\n\n\n\n\n\n\n\n\n\nCategorical Data\n\n\n\n\n\n\n\n\n\n\nLinear Regression Models\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/cat_stats.html",
