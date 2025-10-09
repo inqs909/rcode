@@ -154,6 +154,20 @@
     "text": "7.11 Prediction: MLR\nm &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\npredict(m, newdata = data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp))\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass_g)\nX1, X2, …, Xp → predictor variables (e.g flipper_length_mm, species)\nVAL1, VAL2, …, VALp → predictor values (e.g 150, \"Gentoo\")"
   },
   {
+    "objectID": "posts/regression.html#scatter-plot",
+    "href": "posts/regression.html#scatter-plot",
+    "title": "Linear Regression Models",
+    "section": "7.12 Scatter Plot",
+    "text": "7.12 Scatter Plot\nggplot(DATA, aes(x = VAR1, y = VAR2)) + \n    geom_point()\n\nDATA → the name of your dataset (e.g., penguins).\nVAR1 → a single categorical variable (e.g., body_mass_g).\nVAR2 → a single categorical variable (e.g., flipper_length_mm)."
+  },
+  {
+    "objectID": "posts/regression.html#scatter-plot-trend-line",
+    "href": "posts/regression.html#scatter-plot-trend-line",
+    "title": "Linear Regression Models",
+    "section": "7.13 Scatter Plot + trend line",
+    "text": "7.13 Scatter Plot + trend line\nggplot(DATA, aes(x = VAR1, y = VAR2)) + \n    geom_point() + \n    geom_smooth(method = \"lm\", se = TRUE)\n\nDATA → the name of your dataset (e.g., penguins).\nVAR1 → a single categorical variable (e.g., body_mass_g).\nVAR2 → a single categorical variable (e.g., flipper_length_mm)."
+  },
+  {
     "objectID": "posts/num_stats.html",
     "href": "posts/num_stats.html",
     "title": "Numerical Data",

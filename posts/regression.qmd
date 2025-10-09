@@ -444,3 +444,26 @@ predict(m, newdata = data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp))
 -   **`Y`** → the outcome variable (e.g., `body_mass_g`)
 -   **`X1`, `X2`, ..., `Xp`** → predictor variables (e.g `flipper_length_mm`, `species`)
 -   **`VAL1`, `VAL2`, ..., `VALp`** → predictor values (e.g `150`, `"Gentoo"`)
+
+## Scatter Plot
+
+```r
+ggplot(DATA, aes(x = VAR1, y = VAR2)) + 
+    geom_point()
+```
+
+- `DATA` → the name of your dataset (e.g., `penguins`).
+- `VAR1` → a single categorical variable (e.g., `body_mass_g`).
+- `VAR2` → a single categorical variable (e.g., `flipper_length_mm`).
+
+## Scatter Plot + trend line
+
+```r
+ggplot(DATA, aes(x = VAR1, y = VAR2)) + 
+    geom_point() + 
+    geom_smooth(method = "lm", se = TRUE)
+```
+
+- `DATA` → the name of your dataset (e.g., `penguins`).
+- `VAR1` → a single categorical variable (e.g., `body_mass_g`).
+- `VAR2` → a single categorical variable (e.g., `flipper_length_mm`).
