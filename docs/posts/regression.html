@@ -217,6 +217,8 @@ window.Quarto = {
   <li><a href="#prediction-mlr" id="toc-prediction-mlr" class="nav-link" data-scroll-target="#prediction-mlr"><span class="header-section-number">7.11</span> Prediction: MLR</a></li>
   <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">7.12</span> Scatter Plot</a></li>
   <li><a href="#scatter-plot-trend-line" id="toc-scatter-plot-trend-line" class="nav-link" data-scroll-target="#scatter-plot-trend-line"><span class="header-section-number">7.13</span> Scatter Plot + trend line</a></li>
+  <li><a href="#multiple-density-plot-cat" id="toc-multiple-density-plot-cat" class="nav-link" data-scroll-target="#multiple-density-plot-cat"><span class="header-section-number">7.14</span> Multiple Density Plot (Cat)</a></li>
+  <li><a href="#multiple-box-plots-cat" id="toc-multiple-box-plots-cat" class="nav-link" data-scroll-target="#multiple-box-plots-cat"><span class="header-section-number">7.15</span> Multiple Box Plots (Cat)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -732,8 +734,8 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>penguins</code>).</li>
-<li><code>VAR1</code> → a single categorical variable (e.g., <code>body_mass_g</code>).</li>
-<li><code>VAR2</code> → a single categorical variable (e.g., <code>flipper_length_mm</code>).</li>
+<li><code>VAR1</code> → a single numerical variable (e.g., <code>body_mass_g</code>).</li>
+<li><code>VAR2</code> → a single numerical variable (e.g., <code>flipper_length_mm</code>).</li>
 </ul>
 </section>
 <section id="scatter-plot-trend-line" class="level2" data-number="7.13">
@@ -743,8 +745,28 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>penguins</code>).</li>
-<li><code>VAR1</code> → a single categorical variable (e.g., <code>body_mass_g</code>).</li>
-<li><code>VAR2</code> → a single categorical variable (e.g., <code>flipper_length_mm</code>).</li>
+<li><code>VAR1</code> → a single numerical variable (e.g., <code>body_mass_g</code>).</li>
+<li><code>VAR2</code> → a single numerical variable (e.g., <code>flipper_length_mm</code>).</li>
+</ul>
+</section>
+<section id="multiple-density-plot-cat" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="multiple-density-plot-cat"><span class="header-section-number">7.14</span> Multiple Density Plot (Cat)</h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">color =</span> CAT)) <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>penguins</code>).</li>
+<li><code>NUM</code> → a single numerical variable (e.g., <code>body_mass_g</code>).</li>
+<li><code>CAT</code> → a single categorical variable (e.g., <code>species</code>).</li>
+</ul>
+</section>
+<section id="multiple-box-plots-cat" class="level2" data-number="7.15">
+<h2 data-number="7.15" class="anchored" data-anchor-id="multiple-box-plots-cat"><span class="header-section-number">7.15</span> Multiple Box Plots (Cat)</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">y =</span> CAT)) <span class="sc">+</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>DATA</code> → the name of your dataset (e.g., <code>penguins</code>).</li>
+<li><code>NUM</code> → a single numerical variable (e.g., <code>body_mass_g</code>).</li>
+<li><code>CAT</code> → a single categorical variable (e.g., <code>species</code>).</li>
 </ul>
 
 
@@ -1204,475 +1226,499 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb46" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Linear Regression Models"</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Explaining variation, simple &amp; multiple linear models, categorical predictors, correlation, prediction"</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co">  error: true</span></span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="co">  cache: true</span></span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> r</span></span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="an">knitr:</span></span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="co">    comment: "#&gt;"</span></span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setup</span></span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("tidyverse","DT"))</span></span>
-<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("csucistats")</span></span>
-<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ThemePark")</span></span>
-<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("palmerpenguins")</span></span>
-<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("taylor")</span></span>
-<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(csucistats)</span>
-<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ThemePark)</span>
-<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(taylor)</span>
-<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span> tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
-<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
-<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Google Colab</span></span>
-<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.</span>
-<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a><span class="co"># This code will load the R packages we will use</span></span>
-<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"csucistats"</span>, <span class="st">"taylor"</span>, <span class="st">"palmerpenguins"</span>),</span>
-<span id="cb46-58"><a href="#cb46-58" aria-hidden="true" tabindex="-1"></a>                 <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://inqs909.r-universe.dev"</span>, </span>
-<span id="cb46-59"><a href="#cb46-59" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"https://cloud.r-project.org"</span>))</span>
-<span id="cb46-60"><a href="#cb46-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(csucistats)</span>
-<span id="cb46-61"><a href="#cb46-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb46-62"><a href="#cb46-62" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(taylor)</span>
-<span id="cb46-63"><a href="#cb46-63" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb46-64"><a href="#cb46-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-65"><a href="#cb46-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-66"><a href="#cb46-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using the templates: what to change</span></span>
-<span id="cb46-67"><a href="#cb46-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-68"><a href="#cb46-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame/tibble (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-69"><a href="#cb46-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-70"><a href="#cb46-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`, `X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
-<span id="cb46-71"><a href="#cb46-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>For categorical predictors: ensure the predictor is a **factor** (use <span class="in">`factor(X)`</span> if needed).</span>
-<span id="cb46-72"><a href="#cb46-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-73"><a href="#cb46-73" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modeling Relationships</span></span>
-<span id="cb46-74"><a href="#cb46-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-75"><a href="#cb46-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Explaining variation</span></span>
-<span id="cb46-76"><a href="#cb46-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-77"><a href="#cb46-77" aria-hidden="true" tabindex="-1"></a>This is the process of trying to **reduce unexplained variation** in an outcome by using informative predictors — think *getting it less wrong* with an educated guess.</span>
-<span id="cb46-78"><a href="#cb46-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-81"><a href="#cb46-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-82"><a href="#cb46-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plot-1</span></span>
-<span id="cb46-83"><a href="#cb46-83" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(body_mass_g)) <span class="sc">+</span></span>
-<span id="cb46-84"><a href="#cb46-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
-<span id="cb46-85"><a href="#cb46-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-86"><a href="#cb46-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-87"><a href="#cb46-87" aria-hidden="true" tabindex="-1"></a>If we know some information, we can get less wrong over time.</span>
-<span id="cb46-88"><a href="#cb46-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-91"><a href="#cb46-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-92"><a href="#cb46-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Same variable, grouped by a category (species)</span></span>
-<span id="cb46-93"><a href="#cb46-93" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(body_mass_g, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb46-94"><a href="#cb46-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">5</span>)</span>
-<span id="cb46-95"><a href="#cb46-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-96"><a href="#cb46-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-97"><a href="#cb46-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## A simple model (intercept-only)</span></span>
-<span id="cb46-98"><a href="#cb46-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-99"><a href="#cb46-99" aria-hidden="true" tabindex="-1"></a>We believe the outcome ($Y$) is generated by an unknown data generated process ($DGP_1$): $Y \sim DGP_1$. A minimal model says all outcomes are generated from a number (labeled as $\beta_0$) plus or minus some error ($\varepsilon$):\</span>
-<span id="cb46-100"><a href="#cb46-100" aria-hidden="true" tabindex="-1"></a>$$ Y = \beta_0 + \varepsilon $$</span>
-<span id="cb46-101"><a href="#cb46-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-102"><a href="#cb46-102" aria-hidden="true" tabindex="-1"></a>This is known as a simple model and the errors are simulated by a different DGP $\varepsilon \sim DGP_2$. The simple model is unknown, so we construct and estimated simple model for our best guess on how the data is generated:</span>
-<span id="cb46-103"><a href="#cb46-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-104"><a href="#cb46-104" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb46-105"><a href="#cb46-105" aria-hidden="true" tabindex="-1"></a>\hat Y = \hat\beta_0</span>
-<span id="cb46-106"><a href="#cb46-106" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb46-107"><a href="#cb46-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-108"><a href="#cb46-108" aria-hidden="true" tabindex="-1"></a>The carats above the letters are known as hats, which means best guess.</span>
-<span id="cb46-109"><a href="#cb46-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-110"><a href="#cb46-110" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb46-111"><a href="#cb46-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-112"><a href="#cb46-112" aria-hidden="true" tabindex="-1"></a>**Observed vs. estimated:**</span>
-<span id="cb46-113"><a href="#cb46-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-114"><a href="#cb46-114" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Observed $Y = \beta_0 + \varepsilon$</span>
-<span id="cb46-115"><a href="#cb46-115" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Estimated $\hat Y = \hat\beta_0$</span>
-<span id="cb46-116"><a href="#cb46-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-117"><a href="#cb46-117" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb46-118"><a href="#cb46-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-119"><a href="#cb46-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fitting Simple Model</span></span>
-<span id="cb46-120"><a href="#cb46-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-121"><a href="#cb46-121" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
-<span id="cb46-122"><a href="#cb46-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-123"><a href="#cb46-123" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-124"><a href="#cb46-124" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
-<span id="cb46-125"><a href="#cb46-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-126"><a href="#cb46-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-127"><a href="#cb46-127" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data (e.g., <span class="in">`penguins`</span>).\</span>
-<span id="cb46-128"><a href="#cb46-128" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>).</span>
-<span id="cb46-129"><a href="#cb46-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-130"><a href="#cb46-130" aria-hidden="true" tabindex="-1"></a>**Example:**</span>
-<span id="cb46-131"><a href="#cb46-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-134"><a href="#cb46-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-135"><a href="#cb46-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the null (intercept-only) model</span></span>
-<span id="cb46-136"><a href="#cb46-136" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> penguins)</span>
-<span id="cb46-137"><a href="#cb46-137" aria-hidden="true" tabindex="-1"></a>m0</span>
-<span id="cb46-138"><a href="#cb46-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-139"><a href="#cb46-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-140"><a href="#cb46-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## Linear regression model with one predictor</span></span>
-<span id="cb46-141"><a href="#cb46-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-142"><a href="#cb46-142" aria-hidden="true" tabindex="-1"></a>**Model form:**</span>
-<span id="cb46-143"><a href="#cb46-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-144"><a href="#cb46-144" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb46-145"><a href="#cb46-145" aria-hidden="true" tabindex="-1"></a>Y = \beta_0 + \beta_1 X + \varepsilon, \quad \hat Y = \hat\beta_0 + \hat\beta_1 X.</span>
-<span id="cb46-146"><a href="#cb46-146" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb46-147"><a href="#cb46-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-150"><a href="#cb46-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-151"><a href="#cb46-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
-<span id="cb46-152"><a href="#cb46-152" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb46-153"><a href="#cb46-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb46-154"><a href="#cb46-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-155"><a href="#cb46-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-158"><a href="#cb46-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-159"><a href="#cb46-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a least-squares line</span></span>
-<span id="cb46-160"><a href="#cb46-160" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb46-161"><a href="#cb46-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb46-162"><a href="#cb46-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-163"><a href="#cb46-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-164"><a href="#cb46-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-167"><a href="#cb46-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-168"><a href="#cb46-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
-<span id="cb46-169"><a href="#cb46-169" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span>
-<span id="cb46-170"><a href="#cb46-170" aria-hidden="true" tabindex="-1"></a>m1</span>
-<span id="cb46-171"><a href="#cb46-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-172"><a href="#cb46-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-173"><a href="#cb46-173" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
-<span id="cb46-174"><a href="#cb46-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-175"><a href="#cb46-175" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-176"><a href="#cb46-176" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb46-177"><a href="#cb46-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-178"><a href="#cb46-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-179"><a href="#cb46-179" aria-hidden="true" tabindex="-1"></a><span class="fu"># Categorical predictors (dummy variables)</span></span>
-<span id="cb46-180"><a href="#cb46-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-181"><a href="#cb46-181" aria-hidden="true" tabindex="-1"></a>When we use a **categorical predictor** in a regression, R needs to convert the categories into numbers. This is done using **dummy variables** (also called indicator variables).</span>
-<span id="cb46-182"><a href="#cb46-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-183"><a href="#cb46-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## General idea</span></span>
-<span id="cb46-184"><a href="#cb46-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-185"><a href="#cb46-185" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Suppose we have a categorical variable with **C categories**.\</span>
-<span id="cb46-186"><a href="#cb46-186" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We create **C − 1 dummy variables**, each taking value:</span>
-<span id="cb46-187"><a href="#cb46-187" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`1`</span> if the observation belongs to that category\</span>
-<span id="cb46-188"><a href="#cb46-188" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`0`</span> otherwise\</span>
-<span id="cb46-189"><a href="#cb46-189" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The category without a dummy variable becomes the **reference (baseline)** group.</span>
-<span id="cb46-190"><a href="#cb46-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-191"><a href="#cb46-191" aria-hidden="true" tabindex="-1"></a>**Example: Penguin species:**</span>
-<span id="cb46-192"><a href="#cb46-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-193"><a href="#cb46-193" aria-hidden="true" tabindex="-1"></a>The <span class="in">`species`</span> variable has 3 categories: **Adelie, Chinstrap, Gentoo**.</span>
-<span id="cb46-194"><a href="#cb46-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-195"><a href="#cb46-195" aria-hidden="true" tabindex="-1"></a>We create two dummy variables:</span>
-<span id="cb46-196"><a href="#cb46-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-197"><a href="#cb46-197" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$D_1$: 1 if Chinstrap, 0 otherwise\</span>
-<span id="cb46-198"><a href="#cb46-198" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$D_2$: 1 if Gentoo, 0 otherwise\</span>
-<span id="cb46-199"><a href="#cb46-199" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Adelie is the reference (when both $D_1 = 0, D_2 = 0$)</span>
-<span id="cb46-200"><a href="#cb46-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-201"><a href="#cb46-201" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Species   <span class="pp">|</span> $D_1$ (Chinstrap) <span class="pp">|</span> $D_2$ (Gentoo) <span class="pp">|</span></span>
-<span id="cb46-202"><a href="#cb46-202" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|-------------------|----------------|</span></span>
-<span id="cb46-203"><a href="#cb46-203" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Adelie    <span class="pp">|</span> 0                 <span class="pp">|</span> 0              <span class="pp">|</span></span>
-<span id="cb46-204"><a href="#cb46-204" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Chinstrap <span class="pp">|</span> 1                 <span class="pp">|</span> 0              <span class="pp">|</span></span>
-<span id="cb46-205"><a href="#cb46-205" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Gentoo    <span class="pp">|</span> 0                 <span class="pp">|</span> 1              <span class="pp">|</span></span>
-<span id="cb46-206"><a href="#cb46-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-207"><a href="#cb46-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Regression model with dummy variables</span></span>
-<span id="cb46-208"><a href="#cb46-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-209"><a href="#cb46-209" aria-hidden="true" tabindex="-1"></a>If we model penguin body mass ($Y$) with species:</span>
-<span id="cb46-210"><a href="#cb46-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-211"><a href="#cb46-211" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb46-212"><a href="#cb46-212" aria-hidden="true" tabindex="-1"></a>\hat Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i}</span>
-<span id="cb46-213"><a href="#cb46-213" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb46-214"><a href="#cb46-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-215"><a href="#cb46-215" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\beta_0$: mean of Adelie (reference group)\</span>
-<span id="cb46-216"><a href="#cb46-216" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\beta_1$: difference in mean body mass between Chinstrap and Adelie\</span>
-<span id="cb46-217"><a href="#cb46-217" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\beta_2$: difference in mean body mass between Gentoo and Adelie</span>
-<span id="cb46-218"><a href="#cb46-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-219"><a href="#cb46-219" aria-hidden="true" tabindex="-1"></a>Predictions:\</span>
-<span id="cb46-220"><a href="#cb46-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adelie: $\hat Y = \beta_0$\</span>
-<span id="cb46-221"><a href="#cb46-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Chinstrap: $\hat Y = \beta_0 + \beta_1$\</span>
-<span id="cb46-222"><a href="#cb46-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gentoo: $\hat Y = \beta_0 + \beta_2$</span>
-<span id="cb46-223"><a href="#cb46-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-224"><a href="#cb46-224" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Implementation</span></span>
-<span id="cb46-225"><a href="#cb46-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-226"><a href="#cb46-226" aria-hidden="true" tabindex="-1"></a>R automatically creates dummy variables when you use a factor in <span class="in">`lm()`</span>.\</span>
-<span id="cb46-227"><a href="#cb46-227" aria-hidden="true" tabindex="-1"></a>The first level of the factor is used as the **reference group** (by default).</span>
-<span id="cb46-228"><a href="#cb46-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-231"><a href="#cb46-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-232"><a href="#cb46-232" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model with species (factor) as predictor</span></span>
-<span id="cb46-233"><a href="#cb46-233" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> species, <span class="at">data =</span> penguins)</span>
-<span id="cb46-234"><a href="#cb46-234" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span>
-<span id="cb46-235"><a href="#cb46-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-236"><a href="#cb46-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-237"><a href="#cb46-237" aria-hidden="true" tabindex="-1"></a>**Templates:**</span>
-<span id="cb46-238"><a href="#cb46-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-239"><a href="#cb46-239" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-240"><a href="#cb46-240" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)           <span class="co"># if X is already a factor</span></span>
-<span id="cb46-241"><a href="#cb46-241" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># force X to be treated as factor</span></span>
-<span id="cb46-242"><a href="#cb46-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-243"><a href="#cb46-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-244"><a href="#cb46-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Group Statistics</span></span>
-<span id="cb46-245"><a href="#cb46-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-246"><a href="#cb46-246" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`num_by_cat_stats()`</span> quickly computes **descriptive statistics of a numerical variable grouped by a categorical variable**.</span>
-<span id="cb46-247"><a href="#cb46-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-248"><a href="#cb46-248" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
-<span id="cb46-249"><a href="#cb46-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-250"><a href="#cb46-250" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-251"><a href="#cb46-251" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(DATA, NUM, CAT)</span>
-<span id="cb46-252"><a href="#cb46-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-253"><a href="#cb46-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-254"><a href="#cb46-254" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: the data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-255"><a href="#cb46-255" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`NUM`</span>: the numerical variable you want to summarize (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-256"><a href="#cb46-256" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`CAT`</span>: the categorical variable that defines groups (e.g., <span class="in">`species`</span>)</span>
-<span id="cb46-257"><a href="#cb46-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-258"><a href="#cb46-258" aria-hidden="true" tabindex="-1"></a>**Example:**</span>
-<span id="cb46-259"><a href="#cb46-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-262"><a href="#cb46-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-263"><a href="#cb46-263" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(penguins, body_mass_g, species)</span>
-<span id="cb46-264"><a href="#cb46-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-265"><a href="#cb46-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-266"><a href="#cb46-266" aria-hidden="true" tabindex="-1"></a><span class="fu"># Strength &amp; correlation</span></span>
-<span id="cb46-267"><a href="#cb46-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-268"><a href="#cb46-268" aria-hidden="true" tabindex="-1"></a>Correlation (two numerical variables): $-1 \le r \le 1$. For simple linear regression, $R^2 = r^2$.</span>
-<span id="cb46-269"><a href="#cb46-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-272"><a href="#cb46-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-273"><a href="#cb46-273" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(penguins<span class="sc">$</span>body_mass_g, penguins<span class="sc">$</span>flipper_length_mm)</span>
-<span id="cb46-274"><a href="#cb46-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-275"><a href="#cb46-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-278"><a href="#cb46-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-279"><a href="#cb46-279" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2 helper</span></span>
-<span id="cb46-280"><a href="#cb46-280" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(<span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins))</span>
-<span id="cb46-281"><a href="#cb46-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-282"><a href="#cb46-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-283"><a href="#cb46-283" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
-<span id="cb46-284"><a href="#cb46-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-285"><a href="#cb46-285" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-286"><a href="#cb46-286" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation</span></span>
-<span id="cb46-287"><a href="#cb46-287" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(DATA<span class="sc">$</span>Y, DATA<span class="sc">$</span>X)</span>
-<span id="cb46-288"><a href="#cb46-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-289"><a href="#cb46-289" aria-hidden="true" tabindex="-1"></a><span class="do">## R-Squared</span></span>
-<span id="cb46-290"><a href="#cb46-290" aria-hidden="true" tabindex="-1"></a>xlm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA); </span>
-<span id="cb46-291"><a href="#cb46-291" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(xlm)</span>
-<span id="cb46-292"><a href="#cb46-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-293"><a href="#cb46-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-294"><a href="#cb46-294" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prediction</span></span>
-<span id="cb46-295"><a href="#cb46-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-296"><a href="#cb46-296" aria-hidden="true" tabindex="-1"></a>Model: $\hat Y = \hat\beta_0 + \hat\beta_1 X$. Supply new X to get a prediction $\hat Y$.</span>
-<span id="cb46-297"><a href="#cb46-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-298"><a href="#cb46-298" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
-<span id="cb46-299"><a href="#cb46-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-300"><a href="#cb46-300" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-301"><a href="#cb46-301" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb46-302"><a href="#cb46-302" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL))</span>
-<span id="cb46-303"><a href="#cb46-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-304"><a href="#cb46-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-305"><a href="#cb46-305" aria-hidden="true" tabindex="-1"></a>**Examples:**</span>
-<span id="cb46-306"><a href="#cb46-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-309"><a href="#cb46-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-310"><a href="#cb46-310" aria-hidden="true" tabindex="-1"></a>xlm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> species, <span class="at">data =</span> penguins)</span>
-<span id="cb46-311"><a href="#cb46-311" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(xlm1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">species =</span> <span class="st">"Gentoo"</span>))</span>
-<span id="cb46-312"><a href="#cb46-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-313"><a href="#cb46-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-316"><a href="#cb46-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-317"><a href="#cb46-317" aria-hidden="true" tabindex="-1"></a>xlm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span>
-<span id="cb46-318"><a href="#cb46-318" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(xlm2, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">flipper_length_mm =</span> <span class="dv">190</span>))</span>
-<span id="cb46-319"><a href="#cb46-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-320"><a href="#cb46-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-321"><a href="#cb46-321" aria-hidden="true" tabindex="-1"></a><span class="fu"># Multiple linear regression (MLR)</span></span>
-<span id="cb46-322"><a href="#cb46-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-323"><a href="#cb46-323" aria-hidden="true" tabindex="-1"></a>Model: $Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \varepsilon$</span>
-<span id="cb46-324"><a href="#cb46-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-325"><a href="#cb46-325" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
-<span id="cb46-326"><a href="#cb46-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-327"><a href="#cb46-327" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-328"><a href="#cb46-328" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb46-329"><a href="#cb46-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-330"><a href="#cb46-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-331"><a href="#cb46-331" aria-hidden="true" tabindex="-1"></a>**Example: danceability \~ mode_name + valence + energy**</span>
-<span id="cb46-332"><a href="#cb46-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-335"><a href="#cb46-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-336"><a href="#cb46-336" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: danceability ~ mode_name + valence + energy</span></span>
-<span id="cb46-337"><a href="#cb46-337" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(danceability <span class="sc">~</span> mode_name <span class="sc">+</span> valence <span class="sc">+</span> energy, <span class="at">data =</span> taylor_album_songs)</span>
-<span id="cb46-338"><a href="#cb46-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-339"><a href="#cb46-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-340"><a href="#cb46-340" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjusted $R^2$</span></span>
-<span id="cb46-341"><a href="#cb46-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-342"><a href="#cb46-342" aria-hidden="true" tabindex="-1"></a>$$R^2 = 1 - \frac{\text{Var(resid)}}{\text{Var}(Y)}, \quad</span>
-<span id="cb46-343"><a href="#cb46-343" aria-hidden="true" tabindex="-1"></a>R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-1}{n-k-1}$$</span>
-<span id="cb46-344"><a href="#cb46-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-347"><a href="#cb46-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-348"><a href="#cb46-348" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(danceability <span class="sc">~</span> mode_name <span class="sc">+</span> valence <span class="sc">+</span> energy, <span class="at">data =</span> taylor_album_songs)</span>
-<span id="cb46-349"><a href="#cb46-349" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span>
-<span id="cb46-350"><a href="#cb46-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-351"><a href="#cb46-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-352"><a href="#cb46-352" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix: quick templates (copy‑paste)</span></span>
-<span id="cb46-353"><a href="#cb46-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-354"><a href="#cb46-354" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple Model</span></span>
-<span id="cb46-355"><a href="#cb46-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-356"><a href="#cb46-356" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-357"><a href="#cb46-357" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
-<span id="cb46-358"><a href="#cb46-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-359"><a href="#cb46-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-360"><a href="#cb46-360" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-361"><a href="#cb46-361" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-362"><a href="#cb46-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-363"><a href="#cb46-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-364"><a href="#cb46-364" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple linear regression</span></span>
-<span id="cb46-365"><a href="#cb46-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-366"><a href="#cb46-366" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-367"><a href="#cb46-367" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb46-368"><a href="#cb46-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-369"><a href="#cb46-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-370"><a href="#cb46-370" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-371"><a href="#cb46-371" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-372"><a href="#cb46-372" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
-<span id="cb46-373"><a href="#cb46-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-374"><a href="#cb46-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-375"><a href="#cb46-375" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Categorical predictor</span></span>
-<span id="cb46-376"><a href="#cb46-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-377"><a href="#cb46-377" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-378"><a href="#cb46-378" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA) </span>
-<span id="cb46-379"><a href="#cb46-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-380"><a href="#cb46-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-381"><a href="#cb46-381" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-382"><a href="#cb46-382" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-383"><a href="#cb46-383" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
-<span id="cb46-384"><a href="#cb46-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-385"><a href="#cb46-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-386"><a href="#cb46-386" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Categorical predictor (Create Factor)</span></span>
-<span id="cb46-387"><a href="#cb46-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-388"><a href="#cb46-388" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-389"><a href="#cb46-389" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># coerce X to factor</span></span>
-<span id="cb46-390"><a href="#cb46-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-391"><a href="#cb46-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-392"><a href="#cb46-392" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-393"><a href="#cb46-393" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-394"><a href="#cb46-394" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
-<span id="cb46-395"><a href="#cb46-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-396"><a href="#cb46-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-397"><a href="#cb46-397" aria-hidden="true" tabindex="-1"></a><span class="fu">## Numerical Statistics by Categories</span></span>
-<span id="cb46-398"><a href="#cb46-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-399"><a href="#cb46-399" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-400"><a href="#cb46-400" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(DATA, NUM, CAT)</span>
-<span id="cb46-401"><a href="#cb46-401" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-402"><a href="#cb46-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-403"><a href="#cb46-403" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: the data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-404"><a href="#cb46-404" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`NUM`</span>: the numerical variable you want to summarize (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-405"><a href="#cb46-405" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`CAT`</span>: the categorical variable that defines groups (e.g., <span class="in">`species`</span>)</span>
-<span id="cb46-406"><a href="#cb46-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-407"><a href="#cb46-407" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlation</span></span>
-<span id="cb46-408"><a href="#cb46-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-409"><a href="#cb46-409" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-410"><a href="#cb46-410" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(DATA<span class="sc">$</span>Y, DATA<span class="sc">$</span>X, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
-<span id="cb46-411"><a href="#cb46-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-412"><a href="#cb46-412" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-413"><a href="#cb46-413" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-414"><a href="#cb46-414" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-415"><a href="#cb46-415" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
-<span id="cb46-416"><a href="#cb46-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-417"><a href="#cb46-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-418"><a href="#cb46-418" aria-hidden="true" tabindex="-1"></a><span class="fu">## $R^2$</span></span>
-<span id="cb46-419"><a href="#cb46-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-420"><a href="#cb46-420" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-421"><a href="#cb46-421" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb46-422"><a href="#cb46-422" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(m)</span>
-<span id="cb46-423"><a href="#cb46-423" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-424"><a href="#cb46-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-425"><a href="#cb46-425" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-426"><a href="#cb46-426" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-427"><a href="#cb46-427" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
-<span id="cb46-428"><a href="#cb46-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-429"><a href="#cb46-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-430"><a href="#cb46-430" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple linear regression</span></span>
-<span id="cb46-431"><a href="#cb46-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-432"><a href="#cb46-432" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-433"><a href="#cb46-433" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb46-434"><a href="#cb46-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-435"><a href="#cb46-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-436"><a href="#cb46-436" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-437"><a href="#cb46-437" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-438"><a href="#cb46-438" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
-<span id="cb46-439"><a href="#cb46-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-440"><a href="#cb46-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-441"><a href="#cb46-441" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjusted $R^2$</span></span>
-<span id="cb46-442"><a href="#cb46-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-443"><a href="#cb46-443" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-444"><a href="#cb46-444" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R^2</span></span>
-<span id="cb46-445"><a href="#cb46-445" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb46-446"><a href="#cb46-446" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span>
-<span id="cb46-447"><a href="#cb46-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-448"><a href="#cb46-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-449"><a href="#cb46-449" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-450"><a href="#cb46-450" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-451"><a href="#cb46-451" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
-<span id="cb46-452"><a href="#cb46-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-453"><a href="#cb46-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-454"><a href="#cb46-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: SLR</span></span>
-<span id="cb46-455"><a href="#cb46-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-456"><a href="#cb46-456" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-457"><a href="#cb46-457" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb46-458"><a href="#cb46-458" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL))</span>
-<span id="cb46-459"><a href="#cb46-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-460"><a href="#cb46-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-461"><a href="#cb46-461" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-462"><a href="#cb46-462" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-463"><a href="#cb46-463" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
-<span id="cb46-464"><a href="#cb46-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-465"><a href="#cb46-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-466"><a href="#cb46-466" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: MLR</span></span>
-<span id="cb46-467"><a href="#cb46-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-468"><a href="#cb46-468" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb46-469"><a href="#cb46-469" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb46-470"><a href="#cb46-470" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">X1 =</span> VAL1, <span class="at">X2 =</span> VAL2, ..., <span class="at">Xp =</span> VALp))</span>
-<span id="cb46-471"><a href="#cb46-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-472"><a href="#cb46-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-473"><a href="#cb46-473" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb46-474"><a href="#cb46-474" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
-<span id="cb46-475"><a href="#cb46-475" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
-<span id="cb46-476"><a href="#cb46-476" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`VAL1`, `VAL2`, ..., `VALp`** → predictor values (e.g <span class="in">`150`</span>, <span class="in">`"Gentoo"`</span>)</span>
-<span id="cb46-477"><a href="#cb46-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-478"><a href="#cb46-478" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot</span></span>
-<span id="cb46-479"><a href="#cb46-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-480"><a href="#cb46-480" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb46-481"><a href="#cb46-481" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
-<span id="cb46-482"><a href="#cb46-482" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
-<span id="cb46-483"><a href="#cb46-483" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-484"><a href="#cb46-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-485"><a href="#cb46-485" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
-<span id="cb46-486"><a href="#cb46-486" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single categorical variable (e.g., <span class="in">`body_mass_g`</span>).</span>
-<span id="cb46-487"><a href="#cb46-487" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single categorical variable (e.g., <span class="in">`flipper_length_mm`</span>).</span>
-<span id="cb46-488"><a href="#cb46-488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-489"><a href="#cb46-489" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot + trend line</span></span>
-<span id="cb46-490"><a href="#cb46-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-491"><a href="#cb46-491" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb46-492"><a href="#cb46-492" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
-<span id="cb46-493"><a href="#cb46-493" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb46-494"><a href="#cb46-494" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-495"><a href="#cb46-495" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-496"><a href="#cb46-496" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-497"><a href="#cb46-497" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
-<span id="cb46-498"><a href="#cb46-498" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single categorical variable (e.g., <span class="in">`body_mass_g`</span>).</span>
-<span id="cb46-499"><a href="#cb46-499" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single categorical variable (e.g., <span class="in">`flipper_length_mm`</span>).</span>
+<div class="sourceCode" id="cb48" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Linear Regression Models"</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Explaining variation, simple &amp; multiple linear models, categorical predictors, correlation, prediction"</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="co">  error: true</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="co">  cache: true</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> r</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="an">knitr:</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="co">    comment: "#&gt;"</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setup</span></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("tidyverse","DT"))</span></span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("csucistats")</span></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ThemePark")</span></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("palmerpenguins")</span></span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("taylor")</span></span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(csucistats)</span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ThemePark)</span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(taylor)</span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span> tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Google Colab</span></span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>Copy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.</span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="co"># This code will load the R packages we will use</span></span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"csucistats"</span>, <span class="st">"taylor"</span>, <span class="st">"palmerpenguins"</span>),</span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a>                 <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://inqs909.r-universe.dev"</span>, </span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"https://cloud.r-project.org"</span>))</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(csucistats)</span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(taylor)</span>
+<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using the templates: what to change</span></span>
+<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame/tibble (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`, `X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
+<span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>For categorical predictors: ensure the predictor is a **factor** (use <span class="in">`factor(X)`</span> if needed).</span>
+<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modeling Relationships</span></span>
+<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-75"><a href="#cb48-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Explaining variation</span></span>
+<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a>This is the process of trying to **reduce unexplained variation** in an outcome by using informative predictors — think *getting it less wrong* with an educated guess.</span>
+<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plot-1</span></span>
+<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(body_mass_g)) <span class="sc">+</span></span>
+<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a>If we know some information, we can get less wrong over time.</span>
+<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Same variable, grouped by a category (species)</span></span>
+<span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(body_mass_g, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">5</span>)</span>
+<span id="cb48-95"><a href="#cb48-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## A simple model (intercept-only)</span></span>
+<span id="cb48-98"><a href="#cb48-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-99"><a href="#cb48-99" aria-hidden="true" tabindex="-1"></a>We believe the outcome ($Y$) is generated by an unknown data generated process ($DGP_1$): $Y \sim DGP_1$. A minimal model says all outcomes are generated from a number (labeled as $\beta_0$) plus or minus some error ($\varepsilon$):\</span>
+<span id="cb48-100"><a href="#cb48-100" aria-hidden="true" tabindex="-1"></a>$$ Y = \beta_0 + \varepsilon $$</span>
+<span id="cb48-101"><a href="#cb48-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a>This is known as a simple model and the errors are simulated by a different DGP $\varepsilon \sim DGP_2$. The simple model is unknown, so we construct and estimated simple model for our best guess on how the data is generated:</span>
+<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a>\hat Y = \hat\beta_0</span>
+<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a>The carats above the letters are known as hats, which means best guess.</span>
+<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a>**Observed vs. estimated:**</span>
+<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Observed $Y = \beta_0 + \varepsilon$</span>
+<span id="cb48-115"><a href="#cb48-115" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Estimated $\hat Y = \hat\beta_0$</span>
+<span id="cb48-116"><a href="#cb48-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-117"><a href="#cb48-117" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-118"><a href="#cb48-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-119"><a href="#cb48-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fitting Simple Model</span></span>
+<span id="cb48-120"><a href="#cb48-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-121"><a href="#cb48-121" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
+<span id="cb48-122"><a href="#cb48-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-123"><a href="#cb48-123" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-124"><a href="#cb48-124" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
+<span id="cb48-125"><a href="#cb48-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-126"><a href="#cb48-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-127"><a href="#cb48-127" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data (e.g., <span class="in">`penguins`</span>).\</span>
+<span id="cb48-128"><a href="#cb48-128" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>).</span>
+<span id="cb48-129"><a href="#cb48-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-130"><a href="#cb48-130" aria-hidden="true" tabindex="-1"></a>**Example:**</span>
+<span id="cb48-131"><a href="#cb48-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-134"><a href="#cb48-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-135"><a href="#cb48-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the null (intercept-only) model</span></span>
+<span id="cb48-136"><a href="#cb48-136" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> penguins)</span>
+<span id="cb48-137"><a href="#cb48-137" aria-hidden="true" tabindex="-1"></a>m0</span>
+<span id="cb48-138"><a href="#cb48-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-139"><a href="#cb48-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-140"><a href="#cb48-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## Linear regression model with one predictor</span></span>
+<span id="cb48-141"><a href="#cb48-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-142"><a href="#cb48-142" aria-hidden="true" tabindex="-1"></a>**Model form:**</span>
+<span id="cb48-143"><a href="#cb48-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-144"><a href="#cb48-144" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb48-145"><a href="#cb48-145" aria-hidden="true" tabindex="-1"></a>Y = \beta_0 + \beta_1 X + \varepsilon, \quad \hat Y = \hat\beta_0 + \hat\beta_1 X.</span>
+<span id="cb48-146"><a href="#cb48-146" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb48-147"><a href="#cb48-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-150"><a href="#cb48-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-151"><a href="#cb48-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
+<span id="cb48-152"><a href="#cb48-152" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb48-153"><a href="#cb48-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb48-154"><a href="#cb48-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-155"><a href="#cb48-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-158"><a href="#cb48-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-159"><a href="#cb48-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a least-squares line</span></span>
+<span id="cb48-160"><a href="#cb48-160" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb48-161"><a href="#cb48-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb48-162"><a href="#cb48-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb48-163"><a href="#cb48-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-164"><a href="#cb48-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-167"><a href="#cb48-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-168"><a href="#cb48-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb48-169"><a href="#cb48-169" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span>
+<span id="cb48-170"><a href="#cb48-170" aria-hidden="true" tabindex="-1"></a>m1</span>
+<span id="cb48-171"><a href="#cb48-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-172"><a href="#cb48-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-173"><a href="#cb48-173" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
+<span id="cb48-174"><a href="#cb48-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-175"><a href="#cb48-175" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-176"><a href="#cb48-176" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb48-177"><a href="#cb48-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-178"><a href="#cb48-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-179"><a href="#cb48-179" aria-hidden="true" tabindex="-1"></a><span class="fu"># Categorical predictors (dummy variables)</span></span>
+<span id="cb48-180"><a href="#cb48-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-181"><a href="#cb48-181" aria-hidden="true" tabindex="-1"></a>When we use a **categorical predictor** in a regression, R needs to convert the categories into numbers. This is done using **dummy variables** (also called indicator variables).</span>
+<span id="cb48-182"><a href="#cb48-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-183"><a href="#cb48-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## General idea</span></span>
+<span id="cb48-184"><a href="#cb48-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-185"><a href="#cb48-185" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Suppose we have a categorical variable with **C categories**.\</span>
+<span id="cb48-186"><a href="#cb48-186" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We create **C − 1 dummy variables**, each taking value:</span>
+<span id="cb48-187"><a href="#cb48-187" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`1`</span> if the observation belongs to that category\</span>
+<span id="cb48-188"><a href="#cb48-188" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`0`</span> otherwise\</span>
+<span id="cb48-189"><a href="#cb48-189" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The category without a dummy variable becomes the **reference (baseline)** group.</span>
+<span id="cb48-190"><a href="#cb48-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-191"><a href="#cb48-191" aria-hidden="true" tabindex="-1"></a>**Example: Penguin species:**</span>
+<span id="cb48-192"><a href="#cb48-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-193"><a href="#cb48-193" aria-hidden="true" tabindex="-1"></a>The <span class="in">`species`</span> variable has 3 categories: **Adelie, Chinstrap, Gentoo**.</span>
+<span id="cb48-194"><a href="#cb48-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-195"><a href="#cb48-195" aria-hidden="true" tabindex="-1"></a>We create two dummy variables:</span>
+<span id="cb48-196"><a href="#cb48-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-197"><a href="#cb48-197" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$D_1$: 1 if Chinstrap, 0 otherwise\</span>
+<span id="cb48-198"><a href="#cb48-198" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$D_2$: 1 if Gentoo, 0 otherwise\</span>
+<span id="cb48-199"><a href="#cb48-199" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Adelie is the reference (when both $D_1 = 0, D_2 = 0$)</span>
+<span id="cb48-200"><a href="#cb48-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-201"><a href="#cb48-201" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Species   <span class="pp">|</span> $D_1$ (Chinstrap) <span class="pp">|</span> $D_2$ (Gentoo) <span class="pp">|</span></span>
+<span id="cb48-202"><a href="#cb48-202" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|-------------------|----------------|</span></span>
+<span id="cb48-203"><a href="#cb48-203" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Adelie    <span class="pp">|</span> 0                 <span class="pp">|</span> 0              <span class="pp">|</span></span>
+<span id="cb48-204"><a href="#cb48-204" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Chinstrap <span class="pp">|</span> 1                 <span class="pp">|</span> 0              <span class="pp">|</span></span>
+<span id="cb48-205"><a href="#cb48-205" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Gentoo    <span class="pp">|</span> 0                 <span class="pp">|</span> 1              <span class="pp">|</span></span>
+<span id="cb48-206"><a href="#cb48-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-207"><a href="#cb48-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Regression model with dummy variables</span></span>
+<span id="cb48-208"><a href="#cb48-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-209"><a href="#cb48-209" aria-hidden="true" tabindex="-1"></a>If we model penguin body mass ($Y$) with species:</span>
+<span id="cb48-210"><a href="#cb48-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-211"><a href="#cb48-211" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb48-212"><a href="#cb48-212" aria-hidden="true" tabindex="-1"></a>\hat Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i}</span>
+<span id="cb48-213"><a href="#cb48-213" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb48-214"><a href="#cb48-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-215"><a href="#cb48-215" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\beta_0$: mean of Adelie (reference group)\</span>
+<span id="cb48-216"><a href="#cb48-216" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\beta_1$: difference in mean body mass between Chinstrap and Adelie\</span>
+<span id="cb48-217"><a href="#cb48-217" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\beta_2$: difference in mean body mass between Gentoo and Adelie</span>
+<span id="cb48-218"><a href="#cb48-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-219"><a href="#cb48-219" aria-hidden="true" tabindex="-1"></a>Predictions:\</span>
+<span id="cb48-220"><a href="#cb48-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adelie: $\hat Y = \beta_0$\</span>
+<span id="cb48-221"><a href="#cb48-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Chinstrap: $\hat Y = \beta_0 + \beta_1$\</span>
+<span id="cb48-222"><a href="#cb48-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gentoo: $\hat Y = \beta_0 + \beta_2$</span>
+<span id="cb48-223"><a href="#cb48-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-224"><a href="#cb48-224" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Implementation</span></span>
+<span id="cb48-225"><a href="#cb48-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-226"><a href="#cb48-226" aria-hidden="true" tabindex="-1"></a>R automatically creates dummy variables when you use a factor in <span class="in">`lm()`</span>.\</span>
+<span id="cb48-227"><a href="#cb48-227" aria-hidden="true" tabindex="-1"></a>The first level of the factor is used as the **reference group** (by default).</span>
+<span id="cb48-228"><a href="#cb48-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-231"><a href="#cb48-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-232"><a href="#cb48-232" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model with species (factor) as predictor</span></span>
+<span id="cb48-233"><a href="#cb48-233" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> species, <span class="at">data =</span> penguins)</span>
+<span id="cb48-234"><a href="#cb48-234" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span>
+<span id="cb48-235"><a href="#cb48-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-236"><a href="#cb48-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-237"><a href="#cb48-237" aria-hidden="true" tabindex="-1"></a>**Templates:**</span>
+<span id="cb48-238"><a href="#cb48-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-239"><a href="#cb48-239" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-240"><a href="#cb48-240" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)           <span class="co"># if X is already a factor</span></span>
+<span id="cb48-241"><a href="#cb48-241" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># force X to be treated as factor</span></span>
+<span id="cb48-242"><a href="#cb48-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-243"><a href="#cb48-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-244"><a href="#cb48-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Group Statistics</span></span>
+<span id="cb48-245"><a href="#cb48-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-246"><a href="#cb48-246" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`num_by_cat_stats()`</span> quickly computes **descriptive statistics of a numerical variable grouped by a categorical variable**.</span>
+<span id="cb48-247"><a href="#cb48-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-248"><a href="#cb48-248" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
+<span id="cb48-249"><a href="#cb48-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-250"><a href="#cb48-250" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-251"><a href="#cb48-251" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(DATA, NUM, CAT)</span>
+<span id="cb48-252"><a href="#cb48-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-253"><a href="#cb48-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-254"><a href="#cb48-254" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: the data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-255"><a href="#cb48-255" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`NUM`</span>: the numerical variable you want to summarize (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-256"><a href="#cb48-256" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`CAT`</span>: the categorical variable that defines groups (e.g., <span class="in">`species`</span>)</span>
+<span id="cb48-257"><a href="#cb48-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-258"><a href="#cb48-258" aria-hidden="true" tabindex="-1"></a>**Example:**</span>
+<span id="cb48-259"><a href="#cb48-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-262"><a href="#cb48-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-263"><a href="#cb48-263" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(penguins, body_mass_g, species)</span>
+<span id="cb48-264"><a href="#cb48-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-265"><a href="#cb48-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-266"><a href="#cb48-266" aria-hidden="true" tabindex="-1"></a><span class="fu"># Strength &amp; correlation</span></span>
+<span id="cb48-267"><a href="#cb48-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-268"><a href="#cb48-268" aria-hidden="true" tabindex="-1"></a>Correlation (two numerical variables): $-1 \le r \le 1$. For simple linear regression, $R^2 = r^2$.</span>
+<span id="cb48-269"><a href="#cb48-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-272"><a href="#cb48-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-273"><a href="#cb48-273" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(penguins<span class="sc">$</span>body_mass_g, penguins<span class="sc">$</span>flipper_length_mm)</span>
+<span id="cb48-274"><a href="#cb48-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-275"><a href="#cb48-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-278"><a href="#cb48-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-279"><a href="#cb48-279" aria-hidden="true" tabindex="-1"></a><span class="co"># R^2 helper</span></span>
+<span id="cb48-280"><a href="#cb48-280" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(<span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins))</span>
+<span id="cb48-281"><a href="#cb48-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-282"><a href="#cb48-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-283"><a href="#cb48-283" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
+<span id="cb48-284"><a href="#cb48-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-285"><a href="#cb48-285" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-286"><a href="#cb48-286" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation</span></span>
+<span id="cb48-287"><a href="#cb48-287" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(DATA<span class="sc">$</span>Y, DATA<span class="sc">$</span>X)</span>
+<span id="cb48-288"><a href="#cb48-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-289"><a href="#cb48-289" aria-hidden="true" tabindex="-1"></a><span class="do">## R-Squared</span></span>
+<span id="cb48-290"><a href="#cb48-290" aria-hidden="true" tabindex="-1"></a>xlm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA); </span>
+<span id="cb48-291"><a href="#cb48-291" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(xlm)</span>
+<span id="cb48-292"><a href="#cb48-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-293"><a href="#cb48-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-294"><a href="#cb48-294" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prediction</span></span>
+<span id="cb48-295"><a href="#cb48-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-296"><a href="#cb48-296" aria-hidden="true" tabindex="-1"></a>Model: $\hat Y = \hat\beta_0 + \hat\beta_1 X$. Supply new X to get a prediction $\hat Y$.</span>
+<span id="cb48-297"><a href="#cb48-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-298"><a href="#cb48-298" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
+<span id="cb48-299"><a href="#cb48-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-300"><a href="#cb48-300" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-301"><a href="#cb48-301" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb48-302"><a href="#cb48-302" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL))</span>
+<span id="cb48-303"><a href="#cb48-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-304"><a href="#cb48-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-305"><a href="#cb48-305" aria-hidden="true" tabindex="-1"></a>**Examples:**</span>
+<span id="cb48-306"><a href="#cb48-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-309"><a href="#cb48-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-310"><a href="#cb48-310" aria-hidden="true" tabindex="-1"></a>xlm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> species, <span class="at">data =</span> penguins)</span>
+<span id="cb48-311"><a href="#cb48-311" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(xlm1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">species =</span> <span class="st">"Gentoo"</span>))</span>
+<span id="cb48-312"><a href="#cb48-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-313"><a href="#cb48-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-316"><a href="#cb48-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-317"><a href="#cb48-317" aria-hidden="true" tabindex="-1"></a>xlm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span>
+<span id="cb48-318"><a href="#cb48-318" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(xlm2, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">flipper_length_mm =</span> <span class="dv">190</span>))</span>
+<span id="cb48-319"><a href="#cb48-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-320"><a href="#cb48-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-321"><a href="#cb48-321" aria-hidden="true" tabindex="-1"></a><span class="fu"># Multiple linear regression (MLR)</span></span>
+<span id="cb48-322"><a href="#cb48-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-323"><a href="#cb48-323" aria-hidden="true" tabindex="-1"></a>Model: $Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \varepsilon$</span>
+<span id="cb48-324"><a href="#cb48-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-325"><a href="#cb48-325" aria-hidden="true" tabindex="-1"></a>**Template:**</span>
+<span id="cb48-326"><a href="#cb48-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-327"><a href="#cb48-327" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-328"><a href="#cb48-328" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb48-329"><a href="#cb48-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-330"><a href="#cb48-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-331"><a href="#cb48-331" aria-hidden="true" tabindex="-1"></a>**Example: danceability \~ mode_name + valence + energy**</span>
+<span id="cb48-332"><a href="#cb48-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-335"><a href="#cb48-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-336"><a href="#cb48-336" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: danceability ~ mode_name + valence + energy</span></span>
+<span id="cb48-337"><a href="#cb48-337" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(danceability <span class="sc">~</span> mode_name <span class="sc">+</span> valence <span class="sc">+</span> energy, <span class="at">data =</span> taylor_album_songs)</span>
+<span id="cb48-338"><a href="#cb48-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-339"><a href="#cb48-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-340"><a href="#cb48-340" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjusted $R^2$</span></span>
+<span id="cb48-341"><a href="#cb48-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-342"><a href="#cb48-342" aria-hidden="true" tabindex="-1"></a>$$R^2 = 1 - \frac{\text{Var(resid)}}{\text{Var}(Y)}, \quad</span>
+<span id="cb48-343"><a href="#cb48-343" aria-hidden="true" tabindex="-1"></a>R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-1}{n-k-1}$$</span>
+<span id="cb48-344"><a href="#cb48-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-347"><a href="#cb48-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-348"><a href="#cb48-348" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(danceability <span class="sc">~</span> mode_name <span class="sc">+</span> valence <span class="sc">+</span> energy, <span class="at">data =</span> taylor_album_songs)</span>
+<span id="cb48-349"><a href="#cb48-349" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span>
+<span id="cb48-350"><a href="#cb48-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-351"><a href="#cb48-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-352"><a href="#cb48-352" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix: quick templates (copy‑paste)</span></span>
+<span id="cb48-353"><a href="#cb48-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-354"><a href="#cb48-354" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple Model</span></span>
+<span id="cb48-355"><a href="#cb48-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-356"><a href="#cb48-356" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-357"><a href="#cb48-357" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
+<span id="cb48-358"><a href="#cb48-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-359"><a href="#cb48-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-360"><a href="#cb48-360" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-361"><a href="#cb48-361" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-362"><a href="#cb48-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-363"><a href="#cb48-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-364"><a href="#cb48-364" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple linear regression</span></span>
+<span id="cb48-365"><a href="#cb48-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-366"><a href="#cb48-366" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-367"><a href="#cb48-367" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb48-368"><a href="#cb48-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-369"><a href="#cb48-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-370"><a href="#cb48-370" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-371"><a href="#cb48-371" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-372"><a href="#cb48-372" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
+<span id="cb48-373"><a href="#cb48-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-374"><a href="#cb48-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-375"><a href="#cb48-375" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Categorical predictor</span></span>
+<span id="cb48-376"><a href="#cb48-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-377"><a href="#cb48-377" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-378"><a href="#cb48-378" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA) </span>
+<span id="cb48-379"><a href="#cb48-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-380"><a href="#cb48-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-381"><a href="#cb48-381" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-382"><a href="#cb48-382" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-383"><a href="#cb48-383" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
+<span id="cb48-384"><a href="#cb48-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-385"><a href="#cb48-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-386"><a href="#cb48-386" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Categorical predictor (Create Factor)</span></span>
+<span id="cb48-387"><a href="#cb48-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-388"><a href="#cb48-388" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-389"><a href="#cb48-389" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># coerce X to factor</span></span>
+<span id="cb48-390"><a href="#cb48-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-391"><a href="#cb48-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-392"><a href="#cb48-392" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-393"><a href="#cb48-393" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-394"><a href="#cb48-394" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
+<span id="cb48-395"><a href="#cb48-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-396"><a href="#cb48-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-397"><a href="#cb48-397" aria-hidden="true" tabindex="-1"></a><span class="fu">## Numerical Statistics by Categories</span></span>
+<span id="cb48-398"><a href="#cb48-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-399"><a href="#cb48-399" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-400"><a href="#cb48-400" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(DATA, NUM, CAT)</span>
+<span id="cb48-401"><a href="#cb48-401" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-402"><a href="#cb48-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-403"><a href="#cb48-403" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: the data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-404"><a href="#cb48-404" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`NUM`</span>: the numerical variable you want to summarize (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-405"><a href="#cb48-405" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`CAT`</span>: the categorical variable that defines groups (e.g., <span class="in">`species`</span>)</span>
+<span id="cb48-406"><a href="#cb48-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-407"><a href="#cb48-407" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlation</span></span>
+<span id="cb48-408"><a href="#cb48-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-409"><a href="#cb48-409" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-410"><a href="#cb48-410" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(DATA<span class="sc">$</span>Y, DATA<span class="sc">$</span>X, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb48-411"><a href="#cb48-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-412"><a href="#cb48-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-413"><a href="#cb48-413" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-414"><a href="#cb48-414" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-415"><a href="#cb48-415" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
+<span id="cb48-416"><a href="#cb48-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-417"><a href="#cb48-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-418"><a href="#cb48-418" aria-hidden="true" tabindex="-1"></a><span class="fu">## $R^2$</span></span>
+<span id="cb48-419"><a href="#cb48-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-420"><a href="#cb48-420" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-421"><a href="#cb48-421" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb48-422"><a href="#cb48-422" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(m)</span>
+<span id="cb48-423"><a href="#cb48-423" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-424"><a href="#cb48-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-425"><a href="#cb48-425" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-426"><a href="#cb48-426" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-427"><a href="#cb48-427" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
+<span id="cb48-428"><a href="#cb48-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-429"><a href="#cb48-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-430"><a href="#cb48-430" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple linear regression</span></span>
+<span id="cb48-431"><a href="#cb48-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-432"><a href="#cb48-432" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-433"><a href="#cb48-433" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb48-434"><a href="#cb48-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-435"><a href="#cb48-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-436"><a href="#cb48-436" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-437"><a href="#cb48-437" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-438"><a href="#cb48-438" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
+<span id="cb48-439"><a href="#cb48-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-440"><a href="#cb48-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-441"><a href="#cb48-441" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjusted $R^2$</span></span>
+<span id="cb48-442"><a href="#cb48-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-443"><a href="#cb48-443" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-444"><a href="#cb48-444" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R^2</span></span>
+<span id="cb48-445"><a href="#cb48-445" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb48-446"><a href="#cb48-446" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span>
+<span id="cb48-447"><a href="#cb48-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-448"><a href="#cb48-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-449"><a href="#cb48-449" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-450"><a href="#cb48-450" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-451"><a href="#cb48-451" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
+<span id="cb48-452"><a href="#cb48-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-453"><a href="#cb48-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-454"><a href="#cb48-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: SLR</span></span>
+<span id="cb48-455"><a href="#cb48-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-456"><a href="#cb48-456" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-457"><a href="#cb48-457" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb48-458"><a href="#cb48-458" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL))</span>
+<span id="cb48-459"><a href="#cb48-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-460"><a href="#cb48-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-461"><a href="#cb48-461" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-462"><a href="#cb48-462" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-463"><a href="#cb48-463" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
+<span id="cb48-464"><a href="#cb48-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-465"><a href="#cb48-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-466"><a href="#cb48-466" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: MLR</span></span>
+<span id="cb48-467"><a href="#cb48-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-468"><a href="#cb48-468" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb48-469"><a href="#cb48-469" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb48-470"><a href="#cb48-470" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">X1 =</span> VAL1, <span class="at">X2 =</span> VAL2, ..., <span class="at">Xp =</span> VALp))</span>
+<span id="cb48-471"><a href="#cb48-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-472"><a href="#cb48-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-473"><a href="#cb48-473" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb48-474"><a href="#cb48-474" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass_g`</span>)</span>
+<span id="cb48-475"><a href="#cb48-475" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>, <span class="in">`species`</span>)</span>
+<span id="cb48-476"><a href="#cb48-476" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`VAL1`, `VAL2`, ..., `VALp`** → predictor values (e.g <span class="in">`150`</span>, <span class="in">`"Gentoo"`</span>)</span>
+<span id="cb48-477"><a href="#cb48-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-478"><a href="#cb48-478" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot</span></span>
+<span id="cb48-479"><a href="#cb48-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-480"><a href="#cb48-480" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb48-481"><a href="#cb48-481" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
+<span id="cb48-482"><a href="#cb48-482" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb48-483"><a href="#cb48-483" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-484"><a href="#cb48-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-485"><a href="#cb48-485" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb48-486"><a href="#cb48-486" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single numerical variable (e.g., <span class="in">`body_mass_g`</span>).</span>
+<span id="cb48-487"><a href="#cb48-487" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single numerical variable (e.g., <span class="in">`flipper_length_mm`</span>).</span>
+<span id="cb48-488"><a href="#cb48-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-489"><a href="#cb48-489" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot + trend line</span></span>
+<span id="cb48-490"><a href="#cb48-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-491"><a href="#cb48-491" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb48-492"><a href="#cb48-492" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
+<span id="cb48-493"><a href="#cb48-493" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb48-494"><a href="#cb48-494" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb48-495"><a href="#cb48-495" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-496"><a href="#cb48-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-497"><a href="#cb48-497" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb48-498"><a href="#cb48-498" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single numerical variable (e.g., <span class="in">`body_mass_g`</span>).</span>
+<span id="cb48-499"><a href="#cb48-499" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single numerical variable (e.g., <span class="in">`flipper_length_mm`</span>).</span>
+<span id="cb48-500"><a href="#cb48-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-501"><a href="#cb48-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-502"><a href="#cb48-502" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Density Plot (Cat)</span></span>
+<span id="cb48-503"><a href="#cb48-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-504"><a href="#cb48-504" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb48-505"><a href="#cb48-505" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">color =</span> CAT)) <span class="sc">+</span> </span>
+<span id="cb48-506"><a href="#cb48-506" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>() </span>
+<span id="cb48-507"><a href="#cb48-507" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-508"><a href="#cb48-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-509"><a href="#cb48-509" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb48-510"><a href="#cb48-510" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`NUM`</span> → a single numerical variable (e.g., <span class="in">`body_mass_g`</span>).</span>
+<span id="cb48-511"><a href="#cb48-511" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`CAT`</span> → a single categorical variable (e.g., <span class="in">`species`</span>).</span>
+<span id="cb48-512"><a href="#cb48-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-513"><a href="#cb48-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-514"><a href="#cb48-514" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Box Plots (Cat)</span></span>
+<span id="cb48-515"><a href="#cb48-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-516"><a href="#cb48-516" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb48-517"><a href="#cb48-517" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">y =</span> CAT)) <span class="sc">+</span> </span>
+<span id="cb48-518"><a href="#cb48-518" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() </span>
+<span id="cb48-519"><a href="#cb48-519" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-520"><a href="#cb48-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-521"><a href="#cb48-521" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb48-522"><a href="#cb48-522" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`NUM`</span> → a single numerical variable (e.g., <span class="in">`body_mass_g`</span>).</span>
+<span id="cb48-523"><a href="#cb48-523" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`CAT`</span> → a single categorical variable (e.g., <span class="in">`species`</span>).</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

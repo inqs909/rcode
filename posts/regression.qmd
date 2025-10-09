@@ -453,8 +453,8 @@ ggplot(DATA, aes(x = VAR1, y = VAR2)) +
 ```
 
 - `DATA` → the name of your dataset (e.g., `penguins`).
-- `VAR1` → a single categorical variable (e.g., `body_mass_g`).
-- `VAR2` → a single categorical variable (e.g., `flipper_length_mm`).
+- `VAR1` → a single numerical variable (e.g., `body_mass_g`).
+- `VAR2` → a single numerical variable (e.g., `flipper_length_mm`).
 
 ## Scatter Plot + trend line
 
@@ -465,5 +465,30 @@ ggplot(DATA, aes(x = VAR1, y = VAR2)) +
 ```
 
 - `DATA` → the name of your dataset (e.g., `penguins`).
-- `VAR1` → a single categorical variable (e.g., `body_mass_g`).
-- `VAR2` → a single categorical variable (e.g., `flipper_length_mm`).
+- `VAR1` → a single numerical variable (e.g., `body_mass_g`).
+- `VAR2` → a single numerical variable (e.g., `flipper_length_mm`).
+
+
+## Multiple Density Plot (Cat)
+
+```r
+ggplot(DATA, aes(x = NUM, color = CAT)) + 
+    geom_density() 
+```
+
+- `DATA` → the name of your dataset (e.g., `penguins`).
+- `NUM` → a single numerical variable (e.g., `body_mass_g`).
+- `CAT` → a single categorical variable (e.g., `species`).
+
+
+## Multiple Box Plots (Cat)
+
+```r
+ggplot(DATA, aes(x = NUM, y = CAT)) + 
+    geom_boxplot() 
+```
+
+- `DATA` → the name of your dataset (e.g., `penguins`).
+- `NUM` → a single numerical variable (e.g., `body_mass_g`).
+- `CAT` → a single categorical variable (e.g., `species`).
+
