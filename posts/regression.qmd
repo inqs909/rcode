@@ -1,6 +1,6 @@
 ---
 title: "Linear Regression Models"
-description: "Explaining variation, simple & multiple linear models, categorical predictors, correlation, prediction"
+description: "Explaining variation, simple & multiple linear models, categorical predictors, correlation, and prediction"
 format:
   html:
     toc: true
@@ -11,6 +11,7 @@ format:
     theme: cosmo
     smooth-scroll: true
 editor: source
+image: img/linear.png
 execute:
   echo: true
   warning: false
@@ -67,6 +68,104 @@ library(palmerpenguins)
 -   **`Y`** → the outcome variable (e.g., `body_mass_g`)
 -   **`X`, `X1`, `X2`, ..., `Xp`** → predictor variables (e.g `flipper_length_mm`, `species`)
 -   For categorical predictors: ensure the predictor is a **factor** (use `factor(X)` if needed).
+
+# Visualizing Variables
+
+## Scatter Plot (Continuous vs Continuous)
+
+A **scatter plot** reveals association, trend direction, and form.
+
+**Template:**
+
+```r
+ggplot(DATA, aes(x = VAR1, y = VAR2)) +
+  geom_point()
+```
+
+**Example:**
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+
+## Multi Densigy Plot (Continuous vs Categorical)
+
+A density plot is a way to visualize the distribution of a continuous variable — it shows where data values are concentrated (dense) and where they are sparse.
+
+
+::: panel-tabset
+
+### Color
+
+**Template:**
+
+```r
+ggplot(DATA, aes(x = NUM, color = CAT)) +
+  geom_density()
+```
+
+**Example:**
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, color = species)) +
+  geom_density()
+```
+
+### Fill
+
+**Template:**
+
+```r
+ggplot(DATA, aes(x = NUM, fill = CAT)) +
+  geom_density()
+```
+
+**Example:**
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, group = species)) +
+  geom_density()
+```
+
+### Group
+
+**Template:**
+
+```r
+ggplot(DATA, aes(x = NUM, group = CAT)) +
+  geom_density()
+```
+
+**Example:**
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, group = species)) +
+  geom_density()
+```
+
+:::
+
+## Multi Box Plot (Continuous vs Categorical)
+
+A **box plot** summarizes median, quartiles, and potential outliers.
+
+**Template:**
+
+```r
+ggplot(DATA, aes(x = NUM, y = CAT)) +
+  geom_boxplot()
+```
+
+**Example:**
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot()
+```
+
+
 
 # Modeling Relationships
 
@@ -469,7 +568,7 @@ ggplot(DATA, aes(x = VAR1, y = VAR2)) +
 - `VAR2` → a single numerical variable (e.g., `flipper_length_mm`).
 
 
-## Multiple Density Plot (Cat)
+## Multiple Density Plot (Continous vs Categorical)
 
 ```r
 ggplot(DATA, aes(x = NUM, color = CAT)) + 
@@ -481,7 +580,7 @@ ggplot(DATA, aes(x = NUM, color = CAT)) +
 - `CAT` → a single categorical variable (e.g., `species`).
 
 
-## Multiple Box Plots (Cat)
+## Multiple Box Plots (Continous vs Categorical)
 
 ```r
 ggplot(DATA, aes(x = NUM, y = CAT)) + 

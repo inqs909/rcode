@@ -5,17 +5,15 @@ project:
 website:
   title: "R Code Website"
   navbar:
-    right:
-      - href: index.qmd
-        text: Home
-
+    left: []        # no page links on the left
+    right: []       # no page links on the right
+  search:
+    location: navbar
 format:
   html:
     theme:
-      - cosmo
-      - brand
-    css: styles.css
-    toc: true
+      light: flatly
+      dark: darkly
 
 
 

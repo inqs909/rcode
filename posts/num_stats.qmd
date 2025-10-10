@@ -10,6 +10,7 @@ format:
     theme: cosmo
     smooth-scroll: true
 editor: source
+image: img/num.png
 knitr:
   opts_chunk: 
     echo: true
@@ -259,6 +260,8 @@ ggplot(trashwheel, aes(x = PlasticBottles, y = after_stat(density))) +
 
 
 ## Density plot
+
+A **density plot** is a way to visualize the distribution of a continuous variable — it shows where data values are concentrated (dense) and where they are sparse.
 
 **Template:**
 

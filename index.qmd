@@ -4,6 +4,11 @@ subtitle: "For Math 201 and Math/Psy 202"
 listing:
   contents: posts
   sort: "date desc"
-  type: default
-  fields: [title]
+  fields: [image, title, description]
+  sort-ui: false
+  filter-ui: false
+  feed: true
+  image-align: left
+page-layout: full
 ---
+

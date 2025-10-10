@@ -10,6 +10,7 @@ format:
     theme: cosmo
     smooth-scroll: true
 editor: source
+image: img/cat.png
 knitr:
   opts_chunk: 
     echo: true
