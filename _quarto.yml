@@ -11,7 +11,8 @@ website:
     location: navbar
 format:
   html:
-    theme: minty
-
+    theme:
+      light: theme.scss
+      dark: dark.scss
 
 

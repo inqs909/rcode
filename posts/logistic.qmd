@@ -10,7 +10,6 @@ format:
     number-sections: true
     code-tools: true
     code-fold: false
-    theme: cosmo
     smooth-scroll: true
 editor: source
 image: img/logistic.png
