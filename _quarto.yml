@@ -11,9 +11,7 @@ website:
     location: navbar
 format:
   html:
-    theme:
-      light: flatly
-      dark: darkly
+    theme: minty
 
 
 
