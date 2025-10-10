@@ -4,7 +4,8 @@
     "items": [
       "/posts/num_stats.html",
       "/posts/cat_stats.html",
-      "/posts/regression.html"
+      "/posts/regression.html",
+      "/posts/logistic.html"
     ]
   }
 ]
