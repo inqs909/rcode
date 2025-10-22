@@ -208,6 +208,12 @@ cat_stats(coffee$taste)
 - **Columns**: categories of the second variable
 - Report **counts** or **proportions** by **table**, **row**, or **column**
 
+**ALL**:
+```{r}
+cat_stats(coffee$caffeine, coffee$taste)
+```
+
+
 **Table proportions** (each cell ÷ grand total):
 ```{r}
 cat_stats(coffee$caffeine, coffee$taste, prop = "table")
@@ -272,6 +278,7 @@ ggplot(DATA, aes(x = VAR1, fill = VAR2)) +
 
 **Example (stacked counts):**
 ```{r}
+#| fig-alt: A bar plot showing the caffeine levels by different tastes.
 ggplot(coffee, aes(x = caffeine, fill = taste)) +
   geom_bar()
 ```
