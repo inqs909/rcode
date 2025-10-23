@@ -299,9 +299,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-manuals" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Manuals</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-manuals">    
+        <li>
+    <a class="dropdown-item" href="https://inqs.info/rcode/cat_stats">
+ <span class="dropdown-text">Categorical Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://inqs.info/rcode/num_stats">
+ <span class="dropdown-text">Numerical Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://inqs.info/rcode/regression">
+ <span class="dropdown-text">Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://inqs.info/rcode/logistic">
+ <span class="dropdown-text">Logistic Regression</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -337,8 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#twovariable-summaries-crosstabulation" id="toc-twovariable-summaries-crosstabulation" class="nav-link" data-scroll-target="#twovariable-summaries-crosstabulation"><span class="header-section-number">5</span> Two‑variable summaries (cross‑tabulation)</a>
   <ul class="collapse">
-  <li><a href="#read-the-marginal-distribution" id="toc-read-the-marginal-distribution" class="nav-link" data-scroll-target="#read-the-marginal-distribution"><span class="header-section-number">5.1</span> Read the marginal distribution</a></li>
-  <li><a href="#crosstabulation-twoway-table" id="toc-crosstabulation-twoway-table" class="nav-link" data-scroll-target="#crosstabulation-twoway-table"><span class="header-section-number">5.2</span> Cross‑tabulation (two‑way table)</a></li>
+  <li><a href="#crosstabulation-twoway-table" id="toc-crosstabulation-twoway-table" class="nav-link" data-scroll-target="#crosstabulation-twoway-table"><span class="header-section-number">5.1</span> Cross‑tabulation (two‑way table)</a></li>
   </ul></li>
   <li><a href="#visualizing-categorical-data" id="toc-visualizing-categorical-data" class="nav-link" data-scroll-target="#visualizing-categorical-data"><span class="header-section-number">6</span> Visualizing Categorical Data</a>
   <ul class="collapse">
@@ -570,26 +590,8 @@ Important
 </section>
 <section id="twovariable-summaries-crosstabulation" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Two‑variable summaries (cross‑tabulation)</h1>
-<p>Suppose <code>taste</code> records whether participants like the taste of coffee.</p>
-<section id="read-the-marginal-distribution" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="read-the-marginal-distribution"><span class="header-section-number">5.1</span> Read the marginal distribution</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>taste)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Continguency Table 
-#&gt;  
-#&gt;        n   prop
-#&gt; No   103 0.0289
-#&gt; Yes 3460 0.9711
-#&gt; 
-#&gt; Number of Missing: 479
-#&gt; Proportion of Missing: 0.11850569025235
-#&gt; Row Variable: coffee$taste</code></pre>
-</div>
-</div>
-</section>
-<section id="crosstabulation-twoway-table" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="crosstabulation-twoway-table"><span class="header-section-number">5.2</span> Cross‑tabulation (two‑way table)</h2>
+<section id="crosstabulation-twoway-table" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="crosstabulation-twoway-table"><span class="header-section-number">5.1</span> Cross‑tabulation (two‑way table)</h2>
 <ul>
 <li><strong>Rows</strong>: categories of one variable</li>
 <li><strong>Columns</strong>: categories of the second variable</li>
@@ -597,7 +599,7 @@ Important
 </ul>
 <p><strong>ALL</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Continguency Table 
 #&gt;  
@@ -621,7 +623,7 @@ Important
 </div>
 <p><strong>Table proportions</strong> (each cell ÷ grand total):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste, <span class="at">prop =</span> <span class="st">"table"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste, <span class="at">prop =</span> <span class="st">"table"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Continguency Table 
 #&gt;  
@@ -640,7 +642,7 @@ Important
 </div>
 <p><strong>Row proportions</strong> (each cell ÷ its row total):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste, <span class="at">prop =</span> <span class="st">"row"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste, <span class="at">prop =</span> <span class="st">"row"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Continguency Table 
 #&gt;  
@@ -659,7 +661,7 @@ Important
 </div>
 <p><strong>Column proportions</strong> (each cell ÷ its column total):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste, <span class="at">prop =</span> <span class="st">"col"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, coffee<span class="sc">$</span>taste, <span class="at">prop =</span> <span class="st">"col"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Continguency Table 
 #&gt;  
@@ -685,17 +687,17 @@ Important
 <section id="frequency-bar-plot" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="frequency-bar-plot"><span class="header-section-number">6.1.1</span> Frequency bar plot</h3>
 <p><strong>Template (frequency):</strong></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot() + geom_bar() counts rows per category by default</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot() + geom_bar() counts rows per category by default</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">x =</span> caffeine)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">x =</span> caffeine)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -704,17 +706,17 @@ Important
 <section id="relative-frequency-bar-plot" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="relative-frequency-bar-plot"><span class="header-section-number">6.1.2</span> Relative frequency bar plot</h3>
 <p><strong>Template (proportion):</strong></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># after_stat(prop) computes proportions within the layer</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># after_stat(prop) computes proportions within the layer</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">x =</span> caffeine, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">x =</span> caffeine, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -737,53 +739,53 @@ Note
 <section id="stacked-bar-plots" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="stacked-bar-plots"><span class="header-section-number">6.2</span> Stacked bar plots</h2>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example (stacked counts):</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">x =</span> caffeine, <span class="at">fill =</span> taste)) <span class="sc">+</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">x =</span> caffeine, <span class="at">fill =</span> taste)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" alt="A bar plot showing the caffeine levels by different tastes." width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" alt="A bar plot showing the caffeine levels by different tastes." width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Example (horizontal):</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">y =</span> caffeine, <span class="at">fill =</span> taste)) <span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee, <span class="fu">aes</span>(<span class="at">y =</span> caffeine, <span class="at">fill =</span> taste)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Template (stacked proportions):</strong></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pie-charts-use-sparingly" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="pie-charts-use-sparingly"><span class="header-section-number">6.3</span> Pie charts (use sparingly)</h2>
 <p><strong>Note:</strong> Pie charts can be harder to compare precisely than bars. If you use them, label clearly.</p>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_pie <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_pie, <span class="fu">aes</span>(<span class="at">cat =</span> Category, <span class="at">val =</span> n, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pie</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_pie <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_pie, <span class="fu">aes</span>(<span class="at">cat =</span> Category, <span class="at">val =</span> n, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pie</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>coffee_pie <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee_pie, <span class="fu">aes</span>(<span class="at">cat =</span> Category, <span class="at">val =</span> n, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pie</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>coffee_pie <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee_pie, <span class="fu">aes</span>(<span class="at">cat =</span> Category, <span class="at">val =</span> n, <span class="at">fill =</span> Category)) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pie</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -793,17 +795,17 @@ Note
 <h2 data-number="6.4" class="anchored" data-anchor-id="mosaic-plots"><span class="header-section-number">6.4</span> Mosaic plots</h2>
 <p>A mosaic plot shows a two‑way table with rectangle areas proportional to counts.</p>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA) <span class="sc">+</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(VAR1, VAR2), <span class="at">fill =</span> VAR2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(VAR1, VAR2), <span class="at">fill =</span> VAR2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee) <span class="sc">+</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(caffeine, taste), <span class="at">fill =</span> taste)) <span class="sc">+</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"caffeine × taste"</span>, <span class="at">y =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(caffeine, taste), <span class="at">fill =</span> taste)) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"caffeine × taste"</span>, <span class="at">y =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -830,19 +832,19 @@ Note
 <h2 data-number="6.5" class="anchored" data-anchor-id="waffle-charts"><span class="header-section-number">6.5</span> Waffle charts</h2>
 <p>A waffle chart is a 10×10‑style grid where each square often represents 1%.</p>
 <p><strong>Template:</strong></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>waffle_df <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(waffle_df, <span class="fu">aes</span>(<span class="at">fill =</span> Category, <span class="at">values =</span> n)) <span class="sc">+</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_waffle</span>(<span class="at">make_proportional =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>waffle_df <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(waffle_df, <span class="fu">aes</span>(<span class="at">fill =</span> Category, <span class="at">values =</span> n)) <span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_waffle</span>(<span class="at">make_proportional =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>coffee_waffle <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee_waffle, <span class="fu">aes</span>(<span class="at">fill =</span> Category, <span class="at">values =</span> n)) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_waffle</span>(<span class="at">make_proportional =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>coffee_waffle <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(coffee<span class="sc">$</span>caffeine, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coffee_waffle, <span class="fu">aes</span>(<span class="at">fill =</span> Category, <span class="at">values =</span> n)) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_waffle</span>(<span class="at">make_proportional =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cat_stats_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cat_stats_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -854,7 +856,7 @@ Note
 <p>Each template below has <strong>placeholders</strong> in ALL CAPS (e.g., <code>DATA</code>, <code>VAR</code>, <code>VAR1</code>, <code>VAR2</code>). Replace them with your own dataset name and variable names.</p>
 <section id="frequency-table" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="frequency-table"><span class="header-section-number">7.1</span> Frequency table</h2>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -862,7 +864,7 @@ Note
 </section>
 <section id="proportions-only" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="proportions-only"><span class="header-section-number">7.2</span> Proportions only</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">prop_only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">prop_only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -870,8 +872,8 @@ Note
 </section>
 <section id="bar-plot-frequency" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="bar-plot-frequency"><span class="header-section-number">7.3</span> Bar Plot: Frequency</h2>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR)) <span class="sc">+</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -879,8 +881,8 @@ Note
 </section>
 <section id="bar-plot-proportion" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="bar-plot-proportion"><span class="header-section-number">7.4</span> Bar Plot: Proportion</h2>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -888,7 +890,7 @@ Note
 </section>
 <section id="cross-tabulations-all" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="cross-tabulations-all"><span class="header-section-number">7.5</span> Cross-tabulations (all)</h2>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR1</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -897,9 +899,9 @@ Note
 </section>
 <section id="cross-tabulations-proportions" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="cross-tabulations-proportions"><span class="header-section-number">7.6</span> Cross-tabulations (proportions)</h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2, <span class="at">prop =</span> <span class="st">"table"</span>)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2, <span class="at">prop =</span> <span class="st">"row"</span>)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2, <span class="at">prop =</span> <span class="st">"col"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2, <span class="at">prop =</span> <span class="st">"table"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2, <span class="at">prop =</span> <span class="st">"row"</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR1, DATA<span class="sc">$</span>VAR2, <span class="at">prop =</span> <span class="st">"col"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR1</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -908,7 +910,7 @@ Note
 </section>
 <section id="stacked-bar-counts" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="stacked-bar-counts"><span class="header-section-number">7.7</span> Stacked bar (counts)</h2>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR1</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -917,8 +919,8 @@ Note
 </section>
 <section id="stacked-bar-proportions" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="stacked-bar-proportions"><span class="header-section-number">7.8</span> Stacked bar (proportions)</h2>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">fill =</span> VAR2)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR1</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -927,9 +929,9 @@ Note
 </section>
 <section id="pie-chart" class="level2" data-number="7.9">
 <h2 data-number="7.9" class="anchored" data-anchor-id="pie-chart"><span class="header-section-number">7.9</span> Pie Chart</h2>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_pie <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_pie, <span class="fu">aes</span>(<span class="at">cat =</span> Category, <span class="at">val =</span> n, <span class="at">fill =</span> Category)) <span class="sc">+</span> </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_pie</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_pie <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_pie, <span class="fu">aes</span>(<span class="at">cat =</span> Category, <span class="at">val =</span> n, <span class="at">fill =</span> Category)) <span class="sc">+</span> </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_pie</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -937,8 +939,8 @@ Note
 </section>
 <section id="mosaic-plot" class="level2" data-number="7.10">
 <h2 data-number="7.10" class="anchored" data-anchor-id="mosaic-plot"><span class="header-section-number">7.10</span> Mosaic Plot</h2>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA) <span class="sc">+</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(VAR1, VAR2), <span class="at">fill =</span> VAR2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA) <span class="sc">+</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(VAR1, VAR2), <span class="at">fill =</span> VAR2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR1</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>
@@ -947,9 +949,9 @@ Note
 </section>
 <section id="waffle-plot" class="level2" data-number="7.11">
 <h2 data-number="7.11" class="anchored" data-anchor-id="waffle-plot"><span class="header-section-number">7.11</span> Waffle Plot</h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>wdf <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wdf, <span class="fu">aes</span>(<span class="at">fill =</span> Category, <span class="at">values =</span> n)) <span class="sc">+</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_waffle</span>(<span class="at">make_proportional =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>wdf <span class="ot">&lt;-</span> <span class="fu">cat_stats</span>(DATA<span class="sc">$</span>VAR, <span class="at">tbl_df =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>table</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wdf, <span class="fu">aes</span>(<span class="at">fill =</span> Category, <span class="at">values =</span> n)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_waffle</span>(<span class="at">make_proportional =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>DATA</code> → the name of your dataset (e.g., <code>coffee</code>).</li>
 <li><code>VAR</code> → a single categorical variable (e.g., <code>caffeine</code>).</li>

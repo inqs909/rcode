@@ -195,12 +195,6 @@ cat_stats(coffee$caffeine)
 
 # Two‑variable summaries (cross‑tabulation)
 
-Suppose `taste` records whether participants like the taste of coffee.
-
-## Read the marginal distribution
-```{r}
-cat_stats(coffee$taste)
-```
 
 ## Cross‑tabulation (two‑way table)
 

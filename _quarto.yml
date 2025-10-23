@@ -4,9 +4,18 @@ project:
 
 website:
   title: "R Code Website"
-  navbar:
-    left: []        # no page links on the left
-    right: []       # no page links on the right
+  navbar:      # no page links on the left
+    right:
+      - text: "Manuals"
+        menu:
+          - text: "Categorical Statistics"
+            href: https://inqs.info/rcode/cat_stats
+          - text: "Numerical Statistics"
+            href: https://inqs.info/rcode/num_stats
+          - text: "Linear Regression"
+            href: https://inqs.info/rcode/regression
+          - text: "Logistic Regression"
+            href: https://inqs.info/rcode/logistic
   search:
     location: navbar
 format:
