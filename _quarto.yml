@@ -2,8 +2,10 @@ project:
   type: website
   output-dir: docs
 
+
 website:
   title: "R Code Website"
+  site-url: www.inqs.info/rcode
   navbar:      # no page links on the left
     right:
       - text: "Manuals"

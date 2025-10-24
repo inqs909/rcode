@@ -621,5 +621,19 @@
     "title": "Linear Regression Models",
     "section": "8.15 Multiple Box Plots (Continous vs Categorical)",
     "text": "8.15 Multiple Box Plots (Continous vs Categorical)\nggplot(DATA, aes(x = NUM, y = CAT)) + \n    geom_boxplot() \n\nDATA → the name of your dataset (e.g., penguins).\nNUM → a single numerical variable (e.g., body_mass_g).\nCAT → a single categorical variable (e.g., species)."
+  },
+  {
+    "objectID": "posts/cat_stats.html#introduction",
+    "href": "posts/cat_stats.html#introduction",
+    "title": "Categorical Data",
+    "section": "",
+    "text": "Recognize and work with categorical variables in R.\nSummarize categories using frequencies and proportions (a.k.a. relative frequency).\nCreate standard plots for categorical data: bar, stacked bar, pie, mosaic, and waffle.K\nRead and interpret cross‑tabulations (two‑way tables) with row/column/table proportions.\n\n\n\n\n\n\n\nTip\n\n\n\nUse the Copy button on each code chunk. Many chunks include a template version followed by a worked example."
+  },
+  {
+    "objectID": "posts/cat_stats.html#google-colab-setup",
+    "href": "posts/cat_stats.html#google-colab-setup",
+    "title": "Categorical Data",
+    "section": "0.2 Google Colab Setup",
+    "text": "0.2 Google Colab Setup\nCopy the following code and put it in a code cell in Google Colab. Only do this if you are using a completely new notebook.\n\n# This code will load the R packages we will use\ninstall.packages(c(\"csucistats\"),\n                 repos = c(\"https://inqs909.r-universe.dev\", \"https://cloud.r-project.org\"))\nlibrary(csucistats)\nlibrary(tidyverse)\n\n# Uncomment and run for categorical plots\ncsucistats::install_plots()\nlibrary(ggtricks)\nlibrary(ggmosaic)\nlibrary(waffle)\n\n# Uncomment and run for themes\n# csucistats::install_themes()\n# library(ThemePark)\n# library(ggthemes)\n\n\n\n\n\n\n\nImportant\n\n\n\nGoogle Colab recently updated its R version, therefore, the categorical plots may not install. Comment (Add a # in front of the line) the code to csucistats::install_plots(), library(ggtricks), library(ggmosaic), and library(waffle) if it is not working."
   }
 ]
