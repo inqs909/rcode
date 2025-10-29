@@ -375,7 +375,8 @@ Model: $\hat Y = \hat\beta_0 + \hat\beta_1 X$. Supply new X to get a prediction 
 
 ``` r
 m <- lm(Y ~ X, data = DATA)
-predict(m, newdata = data.frame(X = VAL))
+ndf <- data.frame(X = VAL)
+predict(m, newdata = ndf)
 ```
 
 **Examples:**
@@ -523,7 +524,8 @@ ar2(m)
 
 ``` r
 m <- lm(Y ~ X, data = DATA)
-predict(m, newdata = data.frame(X = VAL))
+ndf <- data.frame(X = VAL)
+predict(m, newdata = ndf)
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -535,7 +537,8 @@ predict(m, newdata = data.frame(X = VAL))
 
 ``` r
 m <- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
-predict(m, newdata = data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp))
+ndf <- data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp)
+predict(m, newdata = ndf)
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)

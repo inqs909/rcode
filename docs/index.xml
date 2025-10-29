@@ -10,7 +10,7 @@
 <atom:link href="www.inqs.info/rcode/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Fri, 24 Oct 2025 05:41:31 GMT</lastBuildDate>
+<lastBuildDate>Wed, 29 Oct 2025 00:38:00 GMT</lastBuildDate>
 <item>
   <title>Numerical Data</title>
   <link>www.inqs.info/rcode/posts/num_stats.html</link>
@@ -987,7 +987,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/num_stats.html</guid>
-  <pubDate>Fri, 24 Oct 2025 05:41:31 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/num.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -2153,7 +2153,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/cat_stats.html</guid>
-  <pubDate>Fri, 24 Oct 2025 05:41:31 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/cat.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -2899,15 +2899,18 @@ background-color: null;
 font-style: inherit;">~</span> X, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> DATA)</span>
-<span id="cb33-2"><span class="fu" style="color: #4758AB;
+<span id="cb33-2">ndf <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">predict</span>(m, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">newdata =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">X =</span> VAL))</span></code></pre></div>
+font-style: inherit;">X =</span> VAL)</span>
+<span id="cb33-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(m, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> ndf)</span></code></pre></div>
 <p><strong>Examples:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1">xlm1 <span class="ot" style="color: #003B4F;
@@ -3209,15 +3212,18 @@ background-color: null;
 font-style: inherit;">~</span> X, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> DATA)</span>
-<span id="cb52-2"><span class="fu" style="color: #4758AB;
+<span id="cb52-2">ndf <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">predict</span>(m, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">newdata =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">X =</span> VAL))</span></code></pre></div>
+font-style: inherit;">X =</span> VAL)</span>
+<span id="cb52-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(m, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> ndf)</span></code></pre></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass_g</code>)</li>
@@ -3241,11 +3247,9 @@ background-color: null;
 font-style: inherit;">+</span> Xp, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> DATA)</span>
-<span id="cb53-2"><span class="fu" style="color: #4758AB;
+<span id="cb53-2">ndf <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">predict</span>(m, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">newdata =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -3253,7 +3257,12 @@ font-style: inherit;">X1 =</span> VAL1, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">X2 =</span> VAL2, ..., <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">Xp =</span> VALp))</span></code></pre></div>
+font-style: inherit;">Xp =</span> VALp)</span>
+<span id="cb53-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(m, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> ndf)</span></code></pre></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass_g</code>)</li>
@@ -3370,7 +3379,7 @@ font-style: inherit;">geom_boxplot</span>() </span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/regression.html</guid>
-  <pubDate>Fri, 24 Oct 2025 05:41:31 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/linear.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -4020,7 +4029,7 @@ font-style: inherit;">"response"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/logistic.html</guid>
-  <pubDate>Fri, 24 Oct 2025 05:41:31 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/logistic.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 </channel>

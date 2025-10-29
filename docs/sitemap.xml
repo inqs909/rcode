@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>www.inqs.info/rcode/posts/logistic.html</loc>
+    <lastmod>2025-10-29T00:37:47.634Z</lastmod>
+  </url>
+  <url>
     <loc>www.inqs.info/rcode/posts/cat_stats.html</loc>
     <lastmod>2025-10-24T05:40:53.716Z</lastmod>
   </url>
   <url>
     <loc>www.inqs.info/rcode/index.html</loc>
-    <lastmod>2025-10-24T05:39:53.890Z</lastmod>
+    <lastmod>2025-10-29T00:34:59.923Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/rcode/posts/num_stats.html</loc>
+    <lastmod>2025-10-10T06:46:10.223Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/rcode/posts/regression.html</loc>
+    <lastmod>2025-10-29T00:37:30.885Z</lastmod>
   </url>
 </urlset>

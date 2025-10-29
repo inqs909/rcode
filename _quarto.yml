@@ -10,14 +10,10 @@ website:
     right:
       - text: "Manuals"
         menu:
-          - text: "Categorical Statistics"
-            href: https://inqs.info/rcode/cat_stats
-          - text: "Numerical Statistics"
-            href: https://inqs.info/rcode/num_stats
-          - text: "Linear Regression"
-            href: https://inqs.info/rcode/regression
-          - text: "Logistic Regression"
-            href: https://inqs.info/rcode/logistic
+          - posts/cat_stats.qmd
+          - posts/num_stats.qmd
+          - posts/regression.qmd
+          - posts/logistic.qmd
   search:
     location: navbar
 format:
