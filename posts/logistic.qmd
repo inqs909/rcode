@@ -140,6 +140,7 @@ m <- glm(dead ~ sex + age + thickness + ulcer,
 exp(coef(m))
 ```
 
+
 # Prediction with models
 
 ## Model

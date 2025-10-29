@@ -10,7 +10,7 @@
 <atom:link href="www.inqs.info/rcode/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Wed, 29 Oct 2025 00:38:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 29 Oct 2025 00:41:14 GMT</lastBuildDate>
 <item>
   <title>Numerical Data</title>
   <link>www.inqs.info/rcode/posts/num_stats.html</link>
@@ -987,7 +987,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/num_stats.html</guid>
-  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:41:14 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/num.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -2153,7 +2153,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/cat_stats.html</guid>
-  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:41:14 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/cat.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -3379,7 +3379,7 @@ font-style: inherit;">geom_boxplot</span>() </span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/regression.html</guid>
-  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:41:14 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/linear.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -4029,7 +4029,7 @@ font-style: inherit;">"response"</span>)</span></code></pre></div>
 
  ]]></description>
   <guid>www.inqs.info/rcode/posts/logistic.html</guid>
-  <pubDate>Wed, 29 Oct 2025 00:38:00 GMT</pubDate>
+  <pubDate>Wed, 29 Oct 2025 00:41:14 GMT</pubDate>
   <media:content url="www.inqs.info/rcode/posts/img/logistic.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 </channel>
